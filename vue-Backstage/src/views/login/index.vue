@@ -6,7 +6,7 @@
       <div class="login-main">
 					<form class="el-form login-form">
             <div class="login-img">
-              <img src="../../images/headerimg.jpeg">
+              <img src="../../images/headerimg.gif">
             </div>
 						<div class="el-form-item">
 							<div class="el-form-item__content">
