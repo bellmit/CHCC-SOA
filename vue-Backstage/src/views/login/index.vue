@@ -2,16 +2,12 @@
   <div class="login-container">
 
 		<div class="login-weaper">
-			<div class="login-left">
-
-			</div>
-
-			<div class="login-border">
-				<div class="login-main">
+			
+      <div class="login-main">
 					<form class="el-form login-form">
-            <h4 class="login-title">
-              后台管理系统
-            </h4>
+            <div class="login-img">
+              <img src="../../images/headerimg.jpeg">
+            </div>
 						<div class="el-form-item">
 							<div class="el-form-item__content">
 								<div class="el-input el-input--small el-input--prefix">
@@ -81,12 +77,8 @@
                 </button>
 							</div>
 						</div>
-
-
 					</form>
-
 				</div>
-			</div>
 
 		</div>
 
@@ -255,36 +247,14 @@ input:-webkit-autofill {
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background: url('../../assets/cloud.jpg') 0 bottom repeat-x #049ec4;
+    // background: url('../../assets/cloud.jpg') 0 bottom repeat-x #049ec4;
+    background: #68E6D8;
     -webkit-animation: animate-cloud 20s linear infinite;
     animation: animate-cloud 20s linear infinite;
 }
 .login-weaper {
   margin: 0 auto;
   width:  1000px;
-}
-.login-left {
-    min-height: 500px;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    background-color: #525252;
-    color: #fff;
-    float: left;
-    width: 50%;
-    position: relative;
 }
 
 .login-border {
@@ -306,10 +276,37 @@ input:-webkit-autofill {
     display: -ms-flexbox;
     display: flex;
 }
+
+.login-img img {
+  display: block;
+  width: 94px;
+  height: 94px;
+  border-radius: 50%;
+}
+
+.login-img {
+  width: 100px;
+  height: 100px;
+  background: #42ECFF;
+  padding: 3px;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.3);
+  margin: 0 auto 10px;
+  margin-bottom: 60px;
+  box-sizing: border-box;
+  border-radius: 50%;
+}
+
 .login-main {
+    background: #fff;
     margin: 0 auto;
-    width: 65%;
+    width: 40%;
     box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 150px #888888;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-bottom: 50px;
+    padding-top: 50px;
 }
 .login-form {
     margin: 10px 0;
@@ -384,8 +381,17 @@ input:-webkit-autofill {
 width: 100%;
 }
 .el-button{
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  height: 50px;
   width: 100%;
-  background:#525252
+  background:#51E248;
 }
 .el-button span{
   color: #fff;
