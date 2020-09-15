@@ -1,0 +1,22 @@
+server:
+  port: 8089
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://47.105.204.66:3306/community?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root@1234
+    driver-class-name: com.mysql.jdbc.Driver
+  session:
+    store-type: redis
+  redis:
+    host: 47.105.204.66
+    password: hhzh1234
+    port: 6379
+
+swagger:
+  enable: true

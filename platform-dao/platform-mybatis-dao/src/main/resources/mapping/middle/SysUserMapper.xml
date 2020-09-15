@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.guihe.platform.dao.mapper.middle.SysUserMapper">
+
+    <select id="findByUsername" resultType="com.guihe.platform.core.domain.SysUser">
+        SELECT * FROM sys_user WHERE username = #{username}
+    </select>
+
+    <select id="findList" resultType="com.guihe.platform.core.result.SysUserResult">
+        SELECT id,username,nickname,mobile,status,create_time,create_by,`type`
+        FROM sys_user
+        <where>
+            `type` in ('0','1')
+            <if test="param.nickname != null and param.nickname != ''">AND nickname = #{param.nickname}</if>
+            <if test="param.status != null">AND `status` = #{param.status}</if>
+            <if test="param.startTime != null and param.startTime != ''">AND create_time >= #{param.startTime}</if>
+            <if test="param.endTime != null and param.endTime != ''">
+                <![CDATA[
+                  AND create_time <= #{param.endTime}
+                ]]>
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="findInfo" resultType="com.guihe.platform.core.domain.SysUser">
+        SELECT *
+        FROM sys_user
+        WHERE id = #{id}
+    </select>
+
+    <select id="findRoles" resultType="java.lang.Integer">
+        SELECT role_id
+        FROM sys_user_role
+        WHERE user_id = #{id}
+    </select>
+
+    <select id="findUserTypeList" resultType="com.guihe.platform.core.domain.SysUser">
+        SELECT * FROM sys_user WHERE `type` = #{type} ORDER BY create_time desc
+    </select>
+
+    <insert id="roleSubmit">
+        INSERT INTO sys_user_role(user_id,role_id) VALUES
+        <foreach collection="roleIds" item="item" separator=",">
+            (#{userId},#{item})
+        </foreach>
+    </insert>
+
+</mapper>
