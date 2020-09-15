@@ -18,3 +18,5 @@ spring:
       config:
         file-extension: yaml
         server-addr: localhost:8848
+mybatis-plus:
+  mapper-locations: classpath*:mapping/*/*.xml

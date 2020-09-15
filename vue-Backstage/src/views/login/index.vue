@@ -10,7 +10,7 @@
 				<div class="login-main">
 					<form class="el-form login-form">
             <h4 class="login-title">
-              融创后台管理系统
+              后台管理系统
             </h4>
 						<div class="el-form-item">
 							<div class="el-form-item__content">
@@ -51,7 +51,7 @@
 								<div class="el-row" span="24">
 									<div class="el-col el-col-16">
 										<div class="el-input el-input--small el-input--prefix">
-											<input :class="loginRules.code.success?'success_bottom':''" type="text" 
+											<input :class="loginRules.code.success?'success_bottom':''" type="text"
                        @blur="isCode(loginForm.code)"
                         v-model="loginForm.code"
                         placeholder="验证码"
@@ -176,7 +176,7 @@ export default {
         if (this.loginRules.username.success&&this.loginRules.password.success&&this.loginRules.code.success) {
           this.password = this.loginForm.password
           let data = this.loginForm
-          data.password = Encrypt(this.loginForm.password); 
+          data.password = Encrypt(this.loginForm.password);
           apiLogin(data).then(res => {
               if(res.status == 10000){
                 console.log('登录成功')

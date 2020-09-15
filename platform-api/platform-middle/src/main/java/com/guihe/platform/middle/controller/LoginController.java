@@ -5,6 +5,7 @@ import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.core.domain.SysRole;
 import com.guihe.platform.core.domain.SysUser;
 import com.guihe.platform.core.result.LoginInfoResult;
+import com.guihe.platform.core.util.CipherAESUtil;
 import com.guihe.platform.middle.config.GoogleGenerator;
 import com.guihe.platform.middle.service.SysMenuService;
 import com.guihe.platform.middle.service.SysRoleService;
@@ -72,11 +73,11 @@ public class LoginController extends BaseController {
                 if(!GoogleGenerator.verify(secret,sysUser.get("code"))){
                     return new Response.Builder(Response.ResponseCode.FAILURE.getNumber()).msg("验证码错误").build();
                 }
-//                String decrypt = CipherAESUtil.desDecrypt(sysUser.get("password"));
-//                if(StringUtils.isBlank(decrypt)){
-//                    return new Response.Builder(Response.ResponseCode.FAILURE.getNumber()).msg("密码解析失败").build();
-//                }
-//                sysUser.put("password",decrypt);
+                String decrypt = CipherAESUtil.desDecrypt(sysUser.get("password"));
+                if(StringUtils.isBlank(decrypt)){
+                    return new Response.Builder(Response.ResponseCode.FAILURE.getNumber()).msg("密码解析失败").build();
+                }
+                sysUser.put("password",decrypt);
             }catch (Exception e){
                 log.error("",e);
                 return new Response.Builder(Response.ResponseCode.FAILURE.getNumber()).msg("请重新操作，如果重复出现该问题请联系管理员!!").build();
