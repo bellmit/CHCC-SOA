@@ -50,8 +50,7 @@ export const constantRoutes = [
         path: 'index',
         name: 'welcome',
         component: () => import('@/views/console/index'),
-        meta: { title: 'Dashboard', icon: 'dashboard', affix: true },
-        // hidden: true
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true }
       }
     ]
   },
@@ -71,8 +70,7 @@ export const constantRoutes = [
         import('@/views/menu/menuList'),
       name: '菜单管理',
       meta: {
-        title: '菜单管理',
-        icon: 'SystemSetting'
+        title: '菜单管理'
       }
     },
     {
@@ -82,8 +80,7 @@ export const constantRoutes = [
         import('@/views/role/index'),
       name: '权限管理',
       meta: {
-        title: '权限管理',
-        icon: 'SystemSetting'
+        title: '权限管理'
       }
     },
     {
@@ -93,8 +90,7 @@ export const constantRoutes = [
         import('@/views/user/index'),
       name: '用户管理',
       meta: {
-        title: '用户管理',
-        icon: 'SystemSetting'
+        title: '用户管理'
       }
     }
     ]
