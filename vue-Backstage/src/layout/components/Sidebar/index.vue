@@ -4,7 +4,7 @@
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <div  class="avue-logo">
         <span class="avue-logo_subtitle">RC</span>
-        <span class="avue-logo_title">融创后台管理系统</span>
+        <span class="avue-logo_title">XXX后台管理系统</span>
       </div>
       <el-menu
         :default-active="activeMenu"
@@ -73,38 +73,23 @@ export default {
        apiGetMenu().then(res => {
           if(res.status === 10000){
            this.menus = res.data  
-
             if(this.menus){
               // this.$root.reload()
               const router = this.$router.options.routes
-              const routers = []
+              console.log(router);
               router.forEach(m => {
                 if (m.path === '/home') {
                   routers.push(m)
                 }
+                m.hidden = true;
                 this.menus.forEach(menu => {
                   if (m.name === menu.name) {
-                    if (m.children && m.children.length > 0){
-                      const array = []
-                      this.menus.forEach(u => {
-                        m.children.forEach(c => {
-                          if (c.name === u.name) {
-                            array.push(c)
-                          }
-                        })
-                      })
-                      m.children = array
-
-                    }
-                    routers.push(m)
+                    m.hidden = false;
                   }
-                })
+                });
               })
-              this.routes = routers
+              this.routes = router;
             }
-
-
-
           }else if(res.status === 20000){
             this.$message.error(res.message);
           }

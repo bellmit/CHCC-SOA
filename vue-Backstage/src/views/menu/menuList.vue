@@ -53,13 +53,10 @@
             <el-tag type="warning">{{ scope.row.orderNum }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="操作" fixed="right" width="180">
+        <el-table-column label="操作" fixed="right" width="150">
           <template slot-scope="scope">
-
-              <el-button type="primary" @click="toEdit(scope.row.id)">编辑</el-button>
-
-              <el-button type="danger" @click="toDelete(scope.row.id)">删除</el-button>
-
+              <el-button type="primary" size="small" @click="toEdit(scope.row.id)">编辑</el-button>
+              <el-button type="danger" size="small" @click="toDelete(scope.row.id)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -162,7 +159,7 @@ import { getList, addMenu, editMenu, getMenus, findInfo, removeMenu } from '@/ap
       fetchData() {
         this.listLoading = true
         getList(this.listQuery).then(response => {
-          this.list = response.data.list
+          this.list = response.data.records
           this.listLoading = false
           this.listSize = response.data.total
         })
@@ -171,7 +168,7 @@ import { getList, addMenu, editMenu, getMenus, findInfo, removeMenu } from '@/ap
         this.listQuery.offset = this.$refs.currentPage.internalCurrentPage
         this.listLoading = true
         getList(this.listQuery).then(response => {
-          this.list = response.data.list
+          this.list = response.data.records
           this.listLoading = false
           this.listSize = response.data.total
         })

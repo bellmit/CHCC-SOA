@@ -68,18 +68,18 @@
             <span>{{ scope.row.createTime }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="上次更新时间" fixed="right" align="center">
+        <el-table-column label="上次更新时间" align="center">
           <template slot-scope="scope">
             <i class="el-icon-time"/>
             <span>{{ scope.row.updateTime }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="350">
+        <el-table-column label="操作" width="300">
           <template slot-scope="scope">
-              <el-button type="primary" @click="toTree(scope.row.id)">权限</el-button>
-              <el-button type="info" @click="toEdit(scope.row.id)">编辑</el-button>
-              <el-button type="success" @click="toEnable(scope.row.id)">启用</el-button>
-              <el-button type="danger" @click="toDisable(scope.row.id)">禁用</el-button>
+              <el-button type="primary" size="small" @click="toTree(scope.row.id)">权限</el-button>
+              <el-button type="info" size="small" @click="toEdit(scope.row.id)">编辑</el-button>
+              <el-button type="success" size="small" @click="toEnable(scope.row.id)">启用</el-button>
+              <el-button type="danger" size="small" @click="toDisable(scope.row.id)">禁用</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -195,7 +195,7 @@ import { getList, findInfo, findTree, commit, enable, disable, commitTree } from
       fetchData() {
         this.listLoading = true
         getList(this.listQuery).then(response => {
-          this.list = response.data.list
+          this.list = response.data.records
           this.listLoading = false
           this.listSize = response.data.total
         })
@@ -204,7 +204,7 @@ import { getList, findInfo, findTree, commit, enable, disable, commitTree } from
         this.listQuery.offset = this.$refs.currentPage.internalCurrentPage
         this.listLoading = true
         getList(this.listQuery).then(response => {
-          this.list = response.data.list
+          this.list = response.data.records
           this.listLoading = false
           this.listSize = response.data.total
         })

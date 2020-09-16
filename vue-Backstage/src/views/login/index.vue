@@ -42,7 +42,30 @@
 						</div>
 
 
-						<div class="el-form-item el-form-item--feedback is-required">
+          <div class="el-form-item">
+							<div class="el-form-item__content">
+								<div class="el-input el-input--small el-input--prefix">
+									<input :class="loginRules.code.success?'success_bottom':''" type="text" 
+                  @blur="isCode(loginForm.code)" 
+                  v-model="loginForm.code" 
+                  autocomplete="off" 
+                  placeholder="动态密码" 
+                  maxlength = '6'
+                  class="el-input__inner">
+									<span class="el-input__prefix">
+									  <i class="el-icon-setting"></i>
+									</span>
+                  <span class="el-input__suffix">
+                    <i class="el-icon-circle-check"></i>
+									</span>
+                  <div class="el-form-item__error"  v-if="loginRules.code.flag">
+                    请输入动态密码
+                  </div>
+								</div>
+							</div>
+						</div>
+
+						<!-- <div class="el-form-item el-form-item--feedback is-required">
 							<div class="el-form-item__content">
 								<div class="el-row" span="24">
 									<div class="el-col el-col-16">
@@ -50,26 +73,20 @@
 											<input :class="loginRules.code.success?'success_bottom':''" type="text"
                        @blur="isCode(loginForm.code)"
                         v-model="loginForm.code"
-                        placeholder="验证码"
-                        maxlength = '5'
+                        placeholder="动态密码"
+                        maxlength = '6'
                        autocomplete="off"  class="el-input__inner">
                       <span class="el-input__prefix">
                         <i class="el-icon-setting"></i>
 											</span>
                       <div class="el-form-item__error" v-if="loginRules.code.flag">
-                        请输入正确验证码
+                        请输入动态密码
                       </div>
 										</div>
 									</div>
-									<div class="el-col el-col-8">
-										<div class="login-code">
-                       <img :src="imgcode" alt="" @click="flsuhImg()">
-                    </div>
-									</div>
 								</div>
-								<!---->
 							</div>
-						</div>
+						</div> -->
 						<div class="el-form-item">
 							<div class="el-form-item__content" style="margin-left: 0px;">
                 <button type="button" class="el-button" @click="handleLogin()">
@@ -116,9 +133,6 @@ export default {
       immediate: true
     }
   },
-  created() {
-     this.flsuhImg()
-  },
   methods: {
     isUsername(value){
       if (!value) {
@@ -139,7 +153,7 @@ export default {
       }
     },
     isCode(value){
-      if (value.length != 5) {
+      if (value.length != 6) {
         this.loginRules.code.flag = true
         this.loginRules.code.success = false
       }else{

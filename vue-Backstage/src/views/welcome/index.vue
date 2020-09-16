@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">欢迎使用融创后台管理系统</div>
+    <div class="dashboard-text">欢迎使用XXX后台管理系统</div>
   </div>
 </template>
 

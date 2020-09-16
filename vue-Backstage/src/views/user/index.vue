@@ -87,18 +87,18 @@
             <span>{{ scope.row.createTime }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="操作" fixed="right" width="460">
+        <el-table-column label="操作" fixed="right" width="400">
           <template slot-scope="scope">
 
-              <el-button type="primary" @click="toTree(scope.row.id)">角色</el-button>
+              <el-button type="primary" size="small" @click="toTree(scope.row.id)">角色</el-button>
 
-              <el-button type="info" @click="toEdit(scope.row.id)">编辑</el-button>
+              <el-button type="info" size="small" @click="toEdit(scope.row.id)">编辑</el-button>
 
-              <el-button type="success" @click="toEnable(scope.row.id)">启用</el-button>
+              <el-button type="success" size="small" @click="toEnable(scope.row.id)">启用</el-button>
 
-              <el-button type="danger" @click="toDisable(scope.row.id)">禁用</el-button>
+              <el-button type="danger" size="small" @click="toDisable(scope.row.id)">禁用</el-button>
 
-              <el-button type="warning" @click="toReset(scope.row.id)">重置密码</el-button>
+              <el-button type="warning" size="small" @click="toReset(scope.row.id)">重置密码</el-button>
 
           </template>
         </el-table-column>
@@ -247,7 +247,7 @@ import { getList, findInfo, commit, enable, disable, reset, commitRole, findRole
             this.listQuery.endTime = this.time[1]
         }
         getList(this.listQuery).then(response => {
-          this.list = response.data.list
+          this.list = response.data.records
           this.listLoading = false
           this.listSize = response.data.total
         })
@@ -256,7 +256,7 @@ import { getList, findInfo, commit, enable, disable, reset, commitRole, findRole
         this.listQuery.offset = this.$refs.currentPage.internalCurrentPage
         this.listLoading = true
         getList(this.listQuery).then(response => {
-          this.list = response.data.list
+          this.list = response.data.records
           this.listLoading = false
           this.listSize = response.data.total
         })
