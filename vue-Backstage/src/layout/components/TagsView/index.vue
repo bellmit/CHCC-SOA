@@ -220,9 +220,9 @@ export default {
         margin-right: 15px;
       }
       &.active {
-        background-color: #17B0FC;
+        background-color: #304156;
         color: #fff;
-        border-color: #17B0FC;
+        border-color: #304156;
         &::before {
           content: '';
           background: #fff;

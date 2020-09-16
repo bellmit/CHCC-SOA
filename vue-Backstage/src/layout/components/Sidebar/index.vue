@@ -76,16 +76,22 @@ export default {
             if(this.menus){
               // this.$root.reload()
               const router = this.$router.options.routes
-              console.log(router);
               router.forEach(m => {
                 if (m.path === '/home') {
                   routers.push(m)
                 }
-                m.hidden = true;
                 this.menus.forEach(menu => {
                   if (m.name === menu.name) {
                     m.hidden = false;
                   }
+                  if(m.children && m.children.length > 0){
+                    m.children.forEach(c => {
+                      if (c.name === menu.name) {
+                        c.hidden = false;
+                      }
+                    })
+                  }
+
                 });
               })
               this.routes = router;
@@ -128,7 +134,7 @@ export default {
     width: 100%;
     height: 64px;
     line-height: 64px;
-    background-color: #17B0FC;
+    background-color: #304156;
     font-size: 20px;
     overflow: hidden;
     -webkit-box-sizing: border-box;

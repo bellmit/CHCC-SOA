@@ -1,18 +1,13 @@
 #app {
-// .el-scrollbar{
-//     -webkit-box-shadow: 2px 0 6px rgba(0,21,41,.15);
-//     box-shadow: 2px 0 6px rgba(0,21,41,.15);
-// }
+
   .main-container {
-    height: 100%;
+    min-height: 100%;
     transition: margin-left .28s;
     margin-left: $sideBarWidth;
     position: relative;
-    overflow: hidden;
   }
 
   .sidebar-container {
-    box-shadow: 2px 0 6px rgba(0,21,41,.35);
     transition: width 0.28s;
     width: $sideBarWidth !important;
     background-color: $menuBg;
@@ -62,6 +57,11 @@
       margin-right: 16px;
     }
 
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
+    }
+
     .el-menu {
       border: none;
       height: 100%;
@@ -75,34 +75,18 @@
         background-color: $menuHover !important;
       }
     }
-    .submenu-title-noDropdown.is-active
-    {
-      &:hover {
-        background-color: $menuActiveBg !important;
-      }
-    }
+
     .is-active>.el-submenu__title {
-      // color: $subMenuActiveText !important;
-      color: $menuText !important;
+      color: $subMenuActiveText !important;
     }
-    .is-active{
-      background-color: $menuActiveBg !important;
-    }
+
     & .nest-menu .el-submenu>.el-submenu__title,
     & .el-submenu .el-menu-item {
       min-width: $sideBarWidth !important;
-      // background-color: $subMenuBg !important;
-      // background-color: $menuActiveBg !important;
-      &:hover {
-        background-color: $subMenuHover !important;
-      }
-    }
-    & .nest-menu .el-submenu>.el-submenu__title.is-active,
-    & .el-submenu .el-menu-item.is-active {
-      min-width: $sideBarWidth !important;
+      background-color: $subMenuBg !important;
 
       &:hover {
-        background-color: $menuActiveBg !important;
+        background-color: $subMenuHover !important;
       }
     }
   }
@@ -126,6 +110,10 @@
         .svg-icon {
           margin-left: 20px;
         }
+
+        .sub-el-icon {
+          margin-left: 19px;
+        }
       }
     }
 
@@ -137,6 +125,10 @@
 
         .svg-icon {
           margin-left: 20px;
+        }
+
+        .sub-el-icon {
+          margin-left: 19px;
         }
 
         .el-submenu__icon-arrow {
@@ -198,6 +190,10 @@
   &>.el-menu {
     .svg-icon {
       margin-right: 16px;
+    }
+    .sub-el-icon {
+      margin-right: 12px;
+      margin-left: -2px;
     }
   }
 

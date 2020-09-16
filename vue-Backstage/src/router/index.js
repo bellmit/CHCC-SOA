@@ -49,9 +49,9 @@ export const constantRoutes = [
       {
         path: 'index',
         name: 'welcome',
-        component: () => import('@/views/welcome/index'),
-        meta: { title: '欢迎', icon: 'article', affix: true },
-        hidden: true
+        component: () => import('@/views/console/index'),
+        meta: { title: 'Dashboard', icon: 'dashboard', affix: true },
+        // hidden: true
       }
     ]
   },
@@ -59,12 +59,14 @@ export const constantRoutes = [
     path: '/sys',
     component: Layout,
     name: '系统管理',
+    hidden: true,
     meta: {
       title: '系统管理',
       icon: 'SystemSetting'
     },
     children: [{
       path: 'menuList',
+      hidden: true,
       component: () =>
         import('@/views/menu/menuList'),
       name: '菜单管理',
@@ -75,6 +77,7 @@ export const constantRoutes = [
     },
     {
       path: 'roleList',
+      hidden: true,
       component: () =>
         import('@/views/role/index'),
       name: '权限管理',
@@ -85,6 +88,7 @@ export const constantRoutes = [
     },
     {
       path: 'userList',
+      hidden: true,
       component: () =>
         import('@/views/user/index'),
       name: '用户管理',
@@ -97,6 +101,7 @@ export const constantRoutes = [
   },
   {
     path: '/upload',
+    hidden: true,
     component: Layout,
     name: '图片管理',
     redirect: '/banner/index',
@@ -111,6 +116,7 @@ export const constantRoutes = [
   },
   {
     path: '/banner',
+    hidden: true,
     component: Layout,
     name: '轮播图管理',
     redirect: '/banner/index',
@@ -125,12 +131,14 @@ export const constantRoutes = [
   },
   {
     path: '/member',
+    hidden: true,
     component: Layout,
     name: '业主身份管理',
     redirect: '/member/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '业主身份管理',
         component: () => import('@/views/member/index'),
         meta: { title: '业主身份管理', icon: 'user' },
@@ -139,12 +147,14 @@ export const constantRoutes = [
   },
   {
     path: '/hexiao',
+    hidden: true,
     component: Layout,
     name: '核销员管理',
     redirect: '/hexiao/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '核销员管理',
         component: () => import('@/views/hexiao/index'),
         meta: { title: '核销员管理', icon: 'guanli' },
@@ -153,6 +163,7 @@ export const constantRoutes = [
   },
   {
     path: '/huodong',
+    hidden: true,
     component: Layout,
     name: '活动管理',
     meta: {
@@ -161,6 +172,7 @@ export const constantRoutes = [
     },
     children: [{
       path: 'huodong',
+      hidden: true,
       component: () =>
         import('@/views/huodong/guanli'),
       name: '分类管理',
@@ -171,6 +183,7 @@ export const constantRoutes = [
     },
     {
       path: 'list',
+      hidden: true,
       component: () =>
         import('@/views/huodong/list'),
       name: '活动列表',
@@ -183,12 +196,14 @@ export const constantRoutes = [
   },
   {
     path: '/baoming',
+    hidden: true,
     component: Layout,
     name: '活动报名',
     redirect: '/baoming/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '活动报名',
         component: () => import('@/views/huodong/baoming'),
         meta: { title: '活动报名', icon: 'baoming' },
@@ -197,12 +212,14 @@ export const constantRoutes = [
   },
   {
     path: '/huigu',
+    hidden: true,
     component: Layout,
     name: '精彩回顾',
     redirect: '/huigu/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '精彩回顾',
         component: () => import('@/views/huigu/index'),
         meta: { title: '精彩回顾', icon: 'huigu' },
@@ -211,12 +228,14 @@ export const constantRoutes = [
   },
   {
     path: '/quanyi',
+    hidden: true,
     component: Layout,
     name: '业主权益',
     redirect: '/quanyi/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '业主权益',
         component: () => import('@/views/quanyi/index'),
         meta: { title: '业主权益', icon: 'quanyi' },
@@ -225,12 +244,14 @@ export const constantRoutes = [
   },
   {
     path: '/xieyi',
+    hidden: true,
     component: Layout,
     name: '用户协议',
     redirect: '/xieyi/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '用户协议',
         component: () => import('@/views/xieyi/index'),
         meta: { title: '用户协议', icon: 'xieyi' },
@@ -253,6 +274,7 @@ export const constantRoutes = [
   // },
   {
     path: '/shop',
+    hidden: true,
     component: Layout,
     name: '商户管理',
     meta: {
@@ -261,6 +283,7 @@ export const constantRoutes = [
     },
     children: [{
       path: 'index',
+      hidden: true,
       component: () =>
         import('@/views/shop/index'),
       name: '商户管理列表',
@@ -271,6 +294,7 @@ export const constantRoutes = [
     },
     {
       path: 'hexiaoyuan',
+      hidden: true,
       component: () =>
         import('@/views/shop/shophexiaoyuan'),
       name: '商户核销员管理',
@@ -281,6 +305,7 @@ export const constantRoutes = [
     },
      {
       path: 'hexiaoorder',
+      hidden: true,
       component: () =>
         import('@/views/shop/shophexiaolist'),
       name: '商户核销记录',
@@ -291,17 +316,16 @@ export const constantRoutes = [
     }
     ]
   },
-
-
-
   {
     path: '/message',
+    hidden: true,
     component: Layout,
     name: '留言管理',
     redirect: '/message/index',
     children: [
       {
         path: 'index',
+        hidden: true,
         name: '留言管理',
         component: () => import('@/views/message/index'),
         meta: { title: '留言管理', icon: 'message' },

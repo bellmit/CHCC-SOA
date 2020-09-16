@@ -19,6 +19,7 @@
     "aes-js": "^3.1.2",
     "axios": "0.18.0",
     "crypto-js": "^3.1.9-1",
+    "echarts": "^4.9.0",
     "element-ui": "^2.9.1",
     "js-cookie": "2.2.0",
     "normalize.css": "7.0.0",
