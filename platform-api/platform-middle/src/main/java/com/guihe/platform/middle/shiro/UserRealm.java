@@ -1,6 +1,9 @@
 package com.guihe.platform.middle.shiro;
 
 
+import com.guihe.platform.core.domain.SysUser;
+import com.guihe.platform.middle.service.SysMenuService;
+import com.guihe.platform.middle.service.SysUserService;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
@@ -24,11 +27,11 @@ import java.util.Set;
 @Component
 public class UserRealm extends AuthorizingRealm {
 
-//    @Autowired
-//    private SysMenuService sysMenuService;
-//
-//    @Autowired
-//    private SysUserService sysUserService;
+    @Autowired
+    private SysMenuService sysMenuService;
+
+    @Autowired
+    private SysUserService sysUserService;
 
 
     /**
@@ -36,57 +39,57 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-//        SysUser user = (SysUser)principals.getPrimaryPrincipal();
-//        Integer userId = user.getId();
-//
-//        List<String> permsList = null;
-//
-//        //系统管理员，拥有最高权限
-//        if(user.getUsername().equals("admin") ){
-//            permsList = sysMenuService.selectList();
-//        }else{
-//            permsList = sysMenuService.queryAllPerms(userId);
-//        }
-//
-//        //用户权限列表
-//        Set<String> permsSet = new HashSet<>();
-//        for(String perms : permsList){
-//            if(StringUtils.isBlank(perms)){
-//                continue;
-//            }
-//            permsSet.addAll(Arrays.asList(perms.trim().split(",")));
-//        }
+        SysUser user = (SysUser)principals.getPrimaryPrincipal();
+        Integer userId = user.getId();
+
+        List<String> permsList = null;
+
+        //系统管理员，拥有最高权限
+        if(user.getUsername().equals("admin") ){
+            permsList = sysMenuService.selectList();
+        }else{
+            permsList = sysMenuService.queryAllPerms(userId);
+        }
+
+        //用户权限列表
+        Set<String> permsSet = new HashSet<>();
+        for(String perms : permsList){
+            if(StringUtils.isBlank(perms)){
+                continue;
+            }
+            permsSet.addAll(Arrays.asList(perms.trim().split(",")));
+        }
 
         SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-//        info.setStringPermissions(permsSet);
+        info.setStringPermissions(permsSet);
         return info;
     }
 
     /**
      * 认证(登录时调用)
      */
-//    @Override
-//    protected AuthenticationInfo doGetAuthenticationInfo(
-//            AuthenticationToken authcToken) throws AuthenticationException {
-//        UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
-//
-//        //查询用户信息
-//        SysUser user = new SysUser();
-//        user.setUsername(token.getUsername());
-//        user = sysUserService.findByUsername(user.getUsername());
-//
-//        //账号不存在
-//        if(user == null) {
-//            throw new UnknownAccountException("账号不正确");
-//        }
-//        //账号锁定
-//        if(user.getStatus() != 1){
-//            throw new LockedAccountException("账号已被锁定,请联系管理员");
-//        }
-//
-//        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
-//        return info;
-//    }
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(
+            AuthenticationToken authcToken) throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken)authcToken;
+
+        //查询用户信息
+        SysUser user = new SysUser();
+        user.setUsername(token.getUsername());
+        user = sysUserService.findByUsername(user.getUsername());
+
+        //账号不存在
+        if(user == null) {
+            throw new UnknownAccountException("账号不正确");
+        }
+        //账号锁定
+        if(user.getStatus() != 1){
+            throw new LockedAccountException("账号已被锁定,请联系管理员");
+        }
+
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, user.getPassword(), ByteSource.Util.bytes(user.getSalt()), getName());
+        return info;
+    }
 
     @Override
     public void setCredentialsMatcher(CredentialsMatcher credentialsMatcher) {
@@ -94,10 +97,6 @@ public class UserRealm extends AuthorizingRealm {
         shaCredentialsMatcher.setHashAlgorithmName(ShiroUtils.hashAlgorithmName);
         shaCredentialsMatcher.setHashIterations(ShiroUtils.hashIterations);
         super.setCredentialsMatcher(shaCredentialsMatcher);
-    }
-
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        return null;
     }
 
 }

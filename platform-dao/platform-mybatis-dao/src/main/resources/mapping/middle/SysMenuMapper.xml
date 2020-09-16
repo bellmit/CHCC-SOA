@@ -37,6 +37,20 @@
         ORDER BY parent_id,order_num,create_time DESC
     </select>
 
+    <select id="findByRoleId" resultType="com.guihe.platform.core.domain.SysMenu">
+        SELECT m.*
+        FROM sys_menu m
+        JOIN sys_menu_role r
+        ON m.id = r.menu_id
+        WHERE
+        `type` = '1'
+        AND
+        role_id IN
+        <foreach collection="roleId" open="(" close=")" item="item" separator=",">
+            #{item}
+        </foreach>
+    </select>
+
     <select id="findByParentIdAndRoleId" resultType="com.guihe.platform.core.result.SysMenuResult">
         SELECT *
         FROM sys_menu

@@ -26,4 +26,6 @@ public interface SysMenuMapper extends BaseMapper<SysMenu> {
     void removeMenu(Integer id);
 
     List<SysMenuResult> findByParentIdAndRoleId(@Param("pid") Integer id, @Param("roleId") List<Integer> roleId);
+
+    List<SysMenu> findByRoleId(@Param("roleId")List<Integer> ids);
 }

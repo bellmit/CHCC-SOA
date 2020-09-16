@@ -1,9 +1,12 @@
 package com.guihe.platform.middle;
 
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @author CHCC
@@ -12,6 +15,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  * @Version 1.0
  * @Description TODO
  */
+@EnableTransactionManagement
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScan(basePackages ="com.guihe.platform.dao.mapper.**.**")
@@ -21,4 +25,9 @@ public class MiddleApplication {
         SpringApplication.run(MiddleApplication.class, args);
     }
 
+    @Bean
+    public PaginationInterceptor paginationInterceptor(){
+        PaginationInterceptor interceptor = new PaginationInterceptor();
+        return interceptor;
+    }
 }

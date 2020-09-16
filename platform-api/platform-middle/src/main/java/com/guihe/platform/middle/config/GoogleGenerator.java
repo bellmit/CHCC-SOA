@@ -26,6 +26,11 @@ public class GoogleGenerator {
     /** 时间前后偏移量 */
     private static int timeExcursion = 3;
 
+    public static void main(String[] args){
+        String secretKey = createSecretKey();
+        System.out.println(secretKey);
+    }
+
     /**
      * 随机生成一个密钥
      *

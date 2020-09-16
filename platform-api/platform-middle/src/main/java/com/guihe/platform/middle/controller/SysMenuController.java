@@ -44,7 +44,7 @@ public class SysMenuController extends BaseController {
             @ApiImplicitParam(name = "offset", value = "取第几页，范围：1~100000。默认1", dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "limmit", value = "分页大小，范围：10~100。默认10", dataType = "int", paramType = "query")
     })
-    public Response list(@RequestBody SysMenuForm form){
+    public Response list(SysMenuForm form){
         try{
             IPage<SysMenuResult> list = sysMenuService.findList(form);
             return this.response(Response.ResponseCode.SUCCESS).data(list);
@@ -96,7 +96,7 @@ public class SysMenuController extends BaseController {
     @PostMapping("/add")
    // @RequiresPermissions("api:sys:menu:add")
     @ApiOperation(value = "添加菜单", notes = "添加菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
-    public Response addMenu(@RequestBody SysMenu sysMenu){
+    public Response addMenu(SysMenu sysMenu){
         if(StringUtils.isBlank(sysMenu.getName())){
             log.error("菜单名称为空");
             return this.response(Response.ResponseCode.FAILURE).message("菜单名称为空");
@@ -125,7 +125,7 @@ public class SysMenuController extends BaseController {
     @PostMapping("/edit")
    // @RequiresPermissions("api:sys:menu:edit")
     @ApiOperation(value = "编辑菜单", notes = "编辑菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
-    public Response editMenu(@RequestBody SysMenu sysMenu){
+    public Response editMenu(SysMenu sysMenu){
         if(sysMenu.getId() == null){
             log.error("请重新选择一条数据");
             return this.response(Response.ResponseCode.FAILURE).message("请重新选择一条数据");

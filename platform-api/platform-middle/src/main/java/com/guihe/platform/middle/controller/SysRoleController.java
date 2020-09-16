@@ -45,7 +45,7 @@ public class SysRoleController extends BaseController {
             @ApiImplicitParam(name = "offset", value = "取第几页，范围：1~100000。默认1", dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "limmit", value = "分页大小，范围：10~100。默认10", dataType = "int", paramType = "query")
     })
-    public Response list(@RequestBody SysRoleForm form){
+    public Response list(SysRoleForm form){
         try{
             IPage<SysRoleResult> list = sysRoleService.findList(form);
             return this.response(Response.ResponseCode.SUCCESS).data(list);
@@ -80,7 +80,7 @@ public class SysRoleController extends BaseController {
             @ApiImplicitParam(name = "ids", value = "菜单id拼接 通过,分割", dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "id", value = "权限id", dataType = "int", paramType = "query")
     })
-    public Response commitTree(@RequestBody TreeForm form){
+    public Response commitTree(TreeForm form){
         try {
             if(StringUtils.isNotBlank(form.getIds()) && form.getId() != null){
                 sysRoleService.commitTree(form.getId(),form.getIds());
@@ -119,7 +119,7 @@ public class SysRoleController extends BaseController {
     @PostMapping("/commit")
     //@RequiresPermissions("api:sys:role:commit")
     @ApiOperation(value = "提交角色信息", notes = "新增/修改 都是这个接口", consumes="application/x-www-form-urlencoded", response = Response.class)
-    public Response commitRole(@RequestBody SysRole sysRole){
+    public Response commitRole(SysRole sysRole){
         try{
             sysRoleService.commitRole(sysRole);
         }catch (Exception e){

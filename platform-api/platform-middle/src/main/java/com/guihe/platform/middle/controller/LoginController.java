@@ -95,15 +95,22 @@ public class LoginController extends BaseController {
         return new Response.Builder(Response.ResponseCode.SUCCESS.getNumber()).build();
     }
 
+    @RequestMapping("/getMenu")
+    @ApiOperation(value = "获取权限", notes = "获取权限")
+    public Response getMenu(){
+        SysUser userEntity = ShiroUtils.getUserEntity();
+        Object o = sysMenuService.indexMenu(userEntity.getId());
+        return this.response(Response.ResponseCode.SUCCESS).data(o);
+    }
+
     @PostMapping("/info")
-    @ApiOperation(value = "获取角色权限信息", notes = "获取角色权限信息", response = LoginInfoResult.class)
+    @ApiOperation(value = "获取角色信息", notes = "获取角色信息", response = LoginInfoResult.class)
     public Response info(){
         try {
             SysUser sysUser = ShiroUtils.getUserEntity();
             if(sysUser == null) return new Response.Builder(Response.ResponseCode.NEED_LOGIN.getNumber()).msg("获取用户信息失败").build();
             LoginInfoResult result = new LoginInfoResult();
             SysRole sysRole = sysRoleService.findByUserId(sysUser.getId());
-            result.setMenus(sysMenuService.indexMenu(sysUser.getId()));
             result.setRoleName(sysRole == null? "暂无角色":sysRole.getName());
             result.setNickname(sysUser.getNickname());
             return this.response(Response.ResponseCode.SUCCESS).data(result);

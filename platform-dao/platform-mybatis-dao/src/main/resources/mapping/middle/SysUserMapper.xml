@@ -7,10 +7,9 @@
     </select>
 
     <select id="findList" resultType="com.guihe.platform.core.result.SysUserResult">
-        SELECT id,username,nickname,mobile,status,create_time,create_by,`type`
+        SELECT id,username,nickname,mobile,status,create_time,create_by
         FROM sys_user
         <where>
-            `type` in ('0','1')
             <if test="param.nickname != null and param.nickname != ''">AND nickname = #{param.nickname}</if>
             <if test="param.status != null">AND `status` = #{param.status}</if>
             <if test="param.startTime != null and param.startTime != ''">AND create_time >= #{param.startTime}</if>
@@ -33,10 +32,6 @@
         SELECT role_id
         FROM sys_user_role
         WHERE user_id = #{id}
-    </select>
-
-    <select id="findUserTypeList" resultType="com.guihe.platform.core.domain.SysUser">
-        SELECT * FROM sys_user WHERE `type` = #{type} ORDER BY create_time desc
     </select>
 
     <insert id="roleSubmit">

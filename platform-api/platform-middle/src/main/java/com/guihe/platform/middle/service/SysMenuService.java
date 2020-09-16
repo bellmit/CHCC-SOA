@@ -96,10 +96,10 @@ public class SysMenuService {
         sysMenuMapper.removeMenu(id);
     }
 
-    public List<MenuTreeResult> indexMenu(Integer id) {
-        List<Integer> roleId = sysRoleMapper.findByUserId(id);
-        if(roleId.isEmpty()) return new ArrayList<>();
-        return tree(0,roleId);
+    public List<SysMenu> indexMenu(Integer id) {
+        List<Integer> ids = sysRoleMapper.findByUserId(id);
+        List<SysMenu> list = sysMenuMapper.findByRoleId(ids);
+        return list;
     }
 
     private List<MenuTreeResult> tree(Integer parentId, List<Integer> roleId){

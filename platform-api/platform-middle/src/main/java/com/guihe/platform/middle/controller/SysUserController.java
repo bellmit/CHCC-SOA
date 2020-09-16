@@ -51,7 +51,7 @@ public class SysUserController extends BaseController{
             @ApiImplicitParam(name = "offset", value = "取第几页，范围：1~100000。默认1", dataType = "int", paramType = "query"),
             @ApiImplicitParam(name = "limmit", value = "分页大小，范围：10~100。默认10", dataType = "int", paramType = "query")
     })
-    public Response findList(@RequestBody SysUserForm sysUserForm){
+    public Response findList(SysUserForm sysUserForm){
         try {
             IPage<SysUserResult> list = sysUserService.findList(sysUserForm);
             return this.response(Response.ResponseCode.SUCCESS).data(list);
@@ -90,7 +90,7 @@ public class SysUserController extends BaseController{
             @ApiImplicitParam(name = "ids", value = "权限id字符串 通过,分割", required = true, dataType = "string", paramType = "query"),
             @ApiImplicitParam(name = "id", value = "提交用户id", required = true, dataType = "int", paramType = "query")
     })
-    public Response commitRole(@RequestBody TreeForm form){
+    public Response commitRole(TreeForm form){
         try {
             if(StringUtils.isNotBlank(form.getIds()) && form.getId() != null){
                 sysUserService.commitRole(form.getId(),form.getIds());
@@ -104,7 +104,7 @@ public class SysUserController extends BaseController{
 
     @PostMapping("/commitUser")
     @ApiOperation(value = "提交用户信息数据", notes = "修改用户信息  新增用户都走这个接口",consumes="application/x-www-form-urlencoded", response = Response.class)
-    public Response commitUser(@RequestBody SysUser sysUser){
+    public Response commitUser(SysUser sysUser){
         if(sysUser.getId() == null){
             if(StringUtils.isBlank(sysUser.getPassword())){
                 log.warn("密码为空");

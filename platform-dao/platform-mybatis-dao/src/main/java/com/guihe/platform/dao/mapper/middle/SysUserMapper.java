@@ -25,6 +25,4 @@ public interface SysUserMapper extends BaseMapper<SysUser> {
     void roleSubmit(@Param("userId") Integer userId, @Param("roleIds") String[] roleIds);
 
     List<Integer> findRoles(Integer id);
-
-    IPage<SysUser> findUserTypeList(Page<Object> objectPage, @Param("type") Integer type);
 }
