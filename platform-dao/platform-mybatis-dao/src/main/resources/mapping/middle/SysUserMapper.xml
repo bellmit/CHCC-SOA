@@ -7,7 +7,7 @@
     </select>
 
     <select id="findList" resultType="com.guihe.platform.core.result.SysUserResult">
-        SELECT id,username,nickname,mobile,status,create_time,create_by
+        SELECT id,username,nickname,mobile,status,create_time,create_by,secret
         FROM sys_user
         <where>
             <if test="param.nickname != null and param.nickname != ''">AND nickname = #{param.nickname}</if>

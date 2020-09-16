@@ -71,14 +71,14 @@
             <span>{{ scope.row.username }}</span>
           </template>
         </el-table-column>
+        <el-table-column label="动态密钥"  align="center">
+          <template slot-scope="scope">
+            <span>{{ scope.row.secret }}</span>
+          </template>
+        </el-table-column>
         <el-table-column label="状态"  align="center">
           <template slot-scope="scope">
             <el-tag type="error">{{ scope.row.statusStr }}</el-tag>
-          </template>
-        </el-table-column>
-        <el-table-column label="创建人"  align="center">
-          <template slot-scope="scope">
-            <span>{{ scope.row.createBy }}</span>
           </template>
         </el-table-column>
         <el-table-column label="创建时间" align="center">
