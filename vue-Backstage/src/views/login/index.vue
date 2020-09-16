@@ -42,7 +42,7 @@
 						</div>
 
 
-          <div class="el-form-item">
+          <div class="el-form-item" v-if="loginRules.password.success">
 							<div class="el-form-item__content">
 								<div class="el-input el-input--small el-input--prefix">
 									<input :class="loginRules.code.success?'success_bottom':''" type="text" 
@@ -55,7 +55,7 @@
 									<span class="el-input__prefix">
 									  <i class="el-icon-setting"></i>
 									</span>
-                  <span class="el-input__suffix">
+                  <span class="el-input__suffix" v-if="loginRules.code.success">
                     <i class="el-icon-circle-check"></i>
 									</span>
                   <div class="el-form-item__error"  v-if="loginRules.code.flag">

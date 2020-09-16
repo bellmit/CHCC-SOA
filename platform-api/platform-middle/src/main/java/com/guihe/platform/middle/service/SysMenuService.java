@@ -72,6 +72,7 @@ public class SysMenuService {
             sysMenus.forEach(menu -> {
                 MenuTreeResult menuTreeResult = new MenuTreeResult();
                 menuTreeResult.setId(menu.getId());
+                menuTreeResult.setLabel(menu.getName());
                 menuTreeResult.setName(menu.getName());
                 menuTreeResult.setPath(menu.getUrl());
                 menuTreeResult.setIcon(menu.getIcon());

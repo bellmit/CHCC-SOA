@@ -17,6 +17,9 @@ public class MenuTreeResult {
     private Integer id;
 
     @ApiModelProperty(value = "菜单名称")
+    private String label;
+
+    @ApiModelProperty(value = "菜单名称")
     private String name;
 
     @ApiModelProperty(value = "路由地址")

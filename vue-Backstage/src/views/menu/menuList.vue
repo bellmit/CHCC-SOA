@@ -14,7 +14,7 @@
         <el-button icon="el-icon-search" @click="fetchData" circle/>
       </div>
     </el-form>
-    <div>
+    <div style="margin-bottom:10px;">
       <el-button type="success" size="small" class="form-btn-diy" @click="dialogFormVisible=true">新增菜单</el-button>
     </div>
     <el-table

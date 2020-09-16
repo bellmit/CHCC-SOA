@@ -33,7 +33,7 @@
         <el-button icon="el-icon-refresh" @click="restSearch" circle/>
       </div>
     </el-form>
-    <div>
+    <div style="margin-bottom:10px;">
       <el-button type="success" size="small" class="form-btn-diy" @click="dialogFormVisible=true">新增角色</el-button>
     </div>
     <el-table
