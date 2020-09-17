@@ -1,20 +1,20 @@
 <template>
     <el-row class="home" :gutter="10">
         <el-col :span="8">
-            <el-card shadow="hover">
+            <div class="content">
                 <Boxcard/>
-            </el-card>
-            <el-card shadow="hover" style="margin-top:10px;">
+            </div>
+            <el-card class="content" shadow="hover" style="margin-top:10px;">
                 <RaddarChart/>
             </el-card>
-            <el-card shadow="hover" style="margin-top:10px;">
+            <el-card class="content" shadow="hover" style="margin-top:10px;">
                 <BarChart/>
             </el-card>
         </el-col>
 
         <el-col :span="16">
             <div class="num">
-                <el-card shadow="hover" :key="item">
+                <el-card class="content" shadow="hover">
                     <i class="icon"></i>
                     <div class="detail">
                         <p class="num1">$ 2323041.41</p>
@@ -22,7 +22,7 @@
                     </div>
                 </el-card>
 
-                 <el-card shadow="hover" :key="item">
+                 <el-card class="content" shadow="hover">
                     <i class="icon"></i>
                     <div class="detail">
                         <p class="num1">$ 45503.25</p>
@@ -30,7 +30,7 @@
                     </div>
                 </el-card>
 
-                 <el-card shadow="hover" :key="item">
+                 <el-card class="content" shadow="hover">
                     <i class="icon"></i>
                     <div class="detail">
                         <p class="num1">255 (件)</p>
@@ -39,7 +39,7 @@
                 </el-card>
             </div>
 
-            <el-card shadow="hover">
+            <el-card class="content" shadow="hover">
                 <div style="height:330px">
                     <LineChart :chart-data="lineChartData"/>
                 </div>
@@ -47,13 +47,13 @@
 
             <div class="graph">
                 <el-col :span="14">
-                    <el-card shadow="hover">
+                    <el-card class="content" shadow="hover">
                     <BerChart/>
                     </el-card>
                 </el-col>
                
                <el-col :span="12">
-                <el-card shadow="hover">
+                <el-card class="content" shadow="hover">
                     <PieChart/>
                 </el-card>
                </el-col>
@@ -98,6 +98,11 @@ export default {
 
 <style lang="scss" scoped>
     .home {
+        height: 0;
+        position: relative;
+        .content {
+            
+        }
         .num {
             display: flex;
             flex-wrap: wrap;

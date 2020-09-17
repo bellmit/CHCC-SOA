@@ -15,8 +15,10 @@ import { mapGetters } from 'vuex'
 import PanThumb from '@/components/PanThumb'
 import Mallki from '@/components/Mallki'
 import header from '@/images/headerimg.gif'
+import resize from './mixins/resize'
 
 export default {
+  mixins: [resize],
   components: { PanThumb, Mallki },
   filters: {
     statusFilter(status) {
