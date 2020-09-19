@@ -12,6 +12,7 @@
         <module>../platform-api/platform-middle</module>
         <module>../platform-core/platform-core-pojo</module>
         <module>../platform-dao/platform-mybatis-dao</module>
+        <module>../platform-api/platform-rest</module>
     </modules>
     <packaging>pom</packaging>
 
