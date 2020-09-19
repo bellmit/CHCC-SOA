@@ -11,7 +11,7 @@ public class DataSourceProperties {
     private String url;
     private String username;
     private String password;
-    private String enable;
+    private boolean enable;
 
     /**
      * Druid默认参数

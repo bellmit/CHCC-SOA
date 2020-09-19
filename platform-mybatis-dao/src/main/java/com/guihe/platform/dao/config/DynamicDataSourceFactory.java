@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class DynamicDataSourceFactory {
 
     public static DruidDataSource buildDruidDataSource(DataSourceProperties properties) {
-        if(!"true".equals(properties)){
+        if(!properties.isEnable()){
             return null;
         }
         DruidDataSource druidDataSource = new DruidDataSource();
