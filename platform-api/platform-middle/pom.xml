@@ -6,6 +6,7 @@
         <artifactId>Guihe_platform</artifactId>
         <groupId>com.guihe</groupId>
         <version>0.0.1</version>
+        <relativePath>../../platform-parent/pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

@@ -8,10 +8,10 @@
     <artifactId>Guihe_platform</artifactId>
     <version>0.0.1</version>
     <modules>
-        <module>sso-server</module>
-        <module>platform-core-pojo</module>
-        <module>platform-mybatis-dao</module>
-        <module>platform-middle</module>
+        <module>../sso-server</module>
+        <module>../platform-api/platform-middle</module>
+        <module>../platform-core/platform-core-pojo</module>
+        <module>../platform-dao/platform-mybatis-dao</module>
     </modules>
     <packaging>pom</packaging>
 
