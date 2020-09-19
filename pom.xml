@@ -9,9 +9,9 @@
     <version>0.0.1</version>
     <modules>
         <module>sso-server</module>
-        <module>platform-core/platform-core-pojo</module>
-        <module>platform-dao/platform-mybatis-dao</module>
-        <module>platform-api/platform-middle</module>
+        <module>platform-core-pojo</module>
+        <module>platform-mybatis-dao</module>
+        <module>platform-middle</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -28,6 +28,7 @@
         <io.netty.version>4.1.6.Final</io.netty.version>
         <mybatisplus.version>3.2.0</mybatisplus.version>
         <mysql.version>8.0.17</mysql.version>
+        <mssql.version>4.0</mssql.version>
         <druid.version>1.1.13</druid.version>
         <mybatis-spring.version>2.1.0</mybatis-spring.version>
         <swagger.version>2.8.0</swagger.version>

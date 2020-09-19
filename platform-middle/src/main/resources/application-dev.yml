@@ -1,0 +1,35 @@
+server:
+  port: 8089
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/platform?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+  session:
+    store-type: redis
+  #Redis配置
+  redis:
+    host: 47.105.204.66
+    password: hhzh1234
+    port: 6379
+
+#Swagger在线文档
+swagger:
+  enable: true
+
+#多数据源
+dynamic:
+  datasource:
+    sqlserver:
+      enable: false
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
+      username: sa
+      password: 123456

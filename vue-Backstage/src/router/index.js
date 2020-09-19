@@ -55,6 +55,37 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/j',
+    component: Layout,
+    name: '服务监控',
+    // hidden: true,
+    meta: {
+      title: '服务监控',
+      icon: 'wangzhan'
+    },
+    children: [{
+      path: 'nacos',
+      // hidden: true,
+      component: () =>
+        import('@/views/monitor/nacos/index'),
+      name: 'Nacos监控',
+      meta: {
+        title: 'Nacos监控'
+      }
+    },
+    {
+      path: 'swagger',
+      // hidden: true,
+      component: () =>
+        import('@/views/monitor/swagger/index'),
+      name: 'API文档',
+      meta: {
+        title: 'API文档'
+      }
+    }
+    ]
+  },
+  {
     path: '/sys',
     component: Layout,
     name: '系统管理',
