@@ -82,6 +82,26 @@ export const constantRoutes = [
       meta: {
         title: 'API文档'
       }
+    },
+    {
+      path: 'quartzManager',
+      // hidden: true,
+      component: () =>
+        import('@/views/monitor/swagger/index'),
+      name: 'Quartz管理',
+      meta: {
+        title: 'Quartz管理'
+      }
+    },
+    {
+      path: 'quartzLog',
+      // hidden: true,
+      component: () =>
+        import('@/views/monitor/swagger/index'),
+      name: 'Quartz日志',
+      meta: {
+        title: 'Quartz日志'
+      }
     }
     ]
   },
