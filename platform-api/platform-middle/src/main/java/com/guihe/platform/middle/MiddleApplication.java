@@ -18,13 +18,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan(basePackages ="com.guihe.platform.dao.mapper.**.**")
+@MapperScan(basePackages ="com.guihe.platform.dao.mapper.middle.**")
 public class MiddleApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(MiddleApplication.class, args);
     }
 
+    //分页
     @Bean
     public PaginationInterceptor paginationInterceptor(){
         PaginationInterceptor interceptor = new PaginationInterceptor();
