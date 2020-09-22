@@ -115,6 +115,16 @@ export const constantRoutes = [
       }
     },
     {
+      path: 'departmentList',
+      hidden: true,
+      component: () =>
+        import('@/views/department/index'),
+      name: '部门管理',
+      meta: {
+        title: '部门管理'
+      }
+    },
+    {
       path: 'userList',
       hidden: true,
       component: () =>

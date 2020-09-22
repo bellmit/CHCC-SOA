@@ -1,5 +1,7 @@
 package com.guihe.platform.core.form;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
@@ -9,9 +11,11 @@ import java.io.Serializable;
  */
 public class BaseForm implements Serializable {
 
+    @TableField(exist = false)
     @ApiModelProperty("当前页码")
     Integer offset = 1;
 
+    @TableField(exist = false)
     @ApiModelProperty("每页条目")
     Integer limmit = 10;
 

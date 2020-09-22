@@ -2,6 +2,7 @@ package com.guihe.platform.middle.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.guihe.platform.core.aop.MyLog;
 import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.core.domain.SysMenu;
 import com.guihe.platform.core.form.SysMenuForm;
@@ -36,6 +37,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "系统菜单列表")
     @PostMapping("/list")
     //@RequiresPermissions("api:sys:menu:list")
     @ApiOperation(value = "后台系统菜单列表", notes = "有分页参数 offset limmit",consumes="application/x-www-form-urlencoded", response = SysMenuResult.class)
@@ -59,6 +61,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "系统菜单树")
     @PostMapping("/tree")
     @ApiOperation(value = "菜单树", notes = "菜单树结构",consumes="application/x-www-form-urlencoded", response = MenuTreeResult.class)
     public Response tree(){
@@ -76,6 +79,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "系统菜单集合")
     @PostMapping("/menus")
     @ApiOperation(value = "全部菜单集合", notes = "全部菜单集合",consumes="application/x-www-form-urlencoded", response = SysMenu.class)
     public Response menus(){
@@ -93,6 +97,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "添加系统菜单")
     @PostMapping("/add")
    // @RequiresPermissions("api:sys:menu:add")
     @ApiOperation(value = "添加菜单", notes = "添加菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -122,6 +127,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "修改系统菜单")
     @PostMapping("/edit")
    // @RequiresPermissions("api:sys:menu:edit")
     @ApiOperation(value = "编辑菜单", notes = "编辑菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -144,6 +150,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "系统菜单详情")
     @PostMapping("/detail/{id}")
     @ApiImplicitParam(name = "id", value = "菜单id", required = true, dataType = "int", paramType = "query")
     @ApiOperation(value = "菜单详情", notes = "菜单详情",consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -157,6 +164,7 @@ public class SysMenuController extends BaseController {
      * @Description :
      * @Date 2019/4/25 上午11:41
      */
+    @MyLog(info = "系统菜单删除")
     @PostMapping("/remove/{id}")
     //@RequiresPermissions("api:sys:menu:remove")
     @ApiImplicitParam(name = "id", value = "菜单id", required = true, dataType = "int", paramType = "query")

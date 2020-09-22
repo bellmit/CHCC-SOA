@@ -95,6 +95,7 @@ public class LoginController extends BaseController {
         return new Response.Builder(Response.ResponseCode.SUCCESS.getNumber()).build();
     }
 
+    @MyLog(info = "获取权限")
     @RequestMapping("/getMenu")
     @ApiOperation(value = "获取权限", notes = "获取权限")
     public Response getMenu(){
@@ -103,6 +104,7 @@ public class LoginController extends BaseController {
         return this.response(Response.ResponseCode.SUCCESS).data(o);
     }
 
+    @MyLog(info = "获取角色信息")
     @PostMapping("/info")
     @ApiOperation(value = "获取角色信息", notes = "获取角色信息", response = LoginInfoResult.class)
     public Response info(){
@@ -120,6 +122,7 @@ public class LoginController extends BaseController {
         }
     }
 
+    @MyLog(info = "退出登录")
     @PostMapping("/logout")
     @ApiOperation(value = "退出登录", notes = "退出登录", response = String.class)
     public Response logout(){

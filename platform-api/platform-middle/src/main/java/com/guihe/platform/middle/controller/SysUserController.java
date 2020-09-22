@@ -2,6 +2,7 @@ package com.guihe.platform.middle.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.google.zxing.WriterException;
+import com.guihe.platform.core.aop.MyLog;
 import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.core.domain.SysUser;
 import com.guihe.platform.core.form.SysUserForm;
@@ -40,6 +41,7 @@ public class SysUserController extends BaseController{
     @Autowired
     private SysUserService sysUserService;
 
+    @MyLog(info = "系统用户菜单列表")
     @PostMapping("/list")
     //@RequiresPermissions("api:sys:user:list")
     @ApiOperation(value = "后台系统用户列表", notes = "有分页参数 offset limmit",consumes="application/x-www-form-urlencoded", response = SysUserResult.class)
@@ -61,6 +63,7 @@ public class SysUserController extends BaseController{
         }
     }
 
+    @MyLog(info = "系统用户生成验证器二维码")
     @GetMapping("/generator/{id}")
     @ApiOperation(value = "生成google验证器二维码", notes = "生成google验证器二维码", response = String.class)
     public void generator(@PathVariable("id") Integer id, HttpServletResponse response) throws IOException, WriterException {
@@ -83,6 +86,7 @@ public class SysUserController extends BaseController{
         }
     }
 
+    @MyLog(info = "系统用户分配角色")
     @PostMapping("/commitRole")
     //@RequiresPermissions("api:sys:user:commitRole")
     @ApiOperation(value = "提交权限数据", notes = "提交权限数据 给该用户分配权限 提交权限id",consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -102,6 +106,7 @@ public class SysUserController extends BaseController{
         return this.response(Response.ResponseCode.SUCCESS).message("操作成功");
     }
 
+    @MyLog(info = "系统用户提交信息数据")
     @PostMapping("/commitUser")
     @ApiOperation(value = "提交用户信息数据", notes = "修改用户信息  新增用户都走这个接口",consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response commitUser(SysUser sysUser){
@@ -139,6 +144,7 @@ public class SysUserController extends BaseController{
         return this.response(Response.ResponseCode.SUCCESS).message("操作成功");
     }
 
+    @MyLog(info = "系统用户获取权限id")
     @PostMapping("/findRoles/{id}")
     @ApiOperation(value = "获取该用户所拥有的权限id",consumes="application/x-www-form-urlencoded", response = Response.class)
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "int", paramType = "query")
@@ -147,6 +153,7 @@ public class SysUserController extends BaseController{
         return this.response(Response.ResponseCode.SUCCESS).data(data);
     }
 
+    @MyLog(info = "系统用户获取信息")
     @PostMapping("/detail/{id}")
     @ApiOperation(value = "获取用户信息",consumes="application/x-www-form-urlencoded", response = SysUser.class)
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "int", paramType = "query")
@@ -155,6 +162,7 @@ public class SysUserController extends BaseController{
         return this.response(Response.ResponseCode.SUCCESS).data(data);
     }
 
+    @MyLog(info = "启用系统用户")
     @PostMapping("/enable/{id}")
     //@RequiresPermissions("api:sys:user:enable")
     @ApiOperation(value = "启用用户",consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -174,6 +182,7 @@ public class SysUserController extends BaseController{
         return this.response(Response.ResponseCode.SUCCESS).message("操作成功");
     }
 
+    @MyLog(info = "禁用系统用户")
     @PostMapping("/disable/{id}")
    // @RequiresPermissions("api:sys:user:disable")
     @ApiOperation(value = "禁用用户",consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -193,6 +202,7 @@ public class SysUserController extends BaseController{
         return this.response(Response.ResponseCode.SUCCESS).message("操作成功");
     }
 
+    @MyLog(info = "系统用户重置密码")
     @PostMapping("/reset/{id}")
     //@RequiresPermissions("api:sys:user:reset")
     @ApiOperation(value = "重置密码", notes = "重置密码为 12345678", consumes="application/x-www-form-urlencoded", response = Response.class)

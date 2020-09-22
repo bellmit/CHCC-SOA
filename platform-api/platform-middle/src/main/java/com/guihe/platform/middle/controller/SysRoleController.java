@@ -1,6 +1,7 @@
 package com.guihe.platform.middle.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.guihe.platform.core.aop.MyLog;
 import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.core.domain.SysRole;
 import com.guihe.platform.core.form.SysRoleForm;
@@ -35,7 +36,8 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
-    
+
+    @MyLog(info = "系统角色列表")
     @PostMapping("/list")
    // @RequiresPermissions("api:sys:role:list")
     @ApiOperation(value = "后台系统角色列表", notes = "有分页参数 offset limmit",consumes="application/x-www-form-urlencoded", response = SysRoleResult.class)
@@ -55,6 +57,7 @@ public class SysRoleController extends BaseController {
         }
     }
 
+    @MyLog(info = "获取权限集合")
     @PostMapping("/getRoles")
     @ApiOperation(value = "获取全部权限集合", consumes="application/x-www-form-urlencoded", response = SysRole.class)
     public Response getRoles(){
@@ -72,7 +75,8 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
-    
+
+    @MyLog(info = "系统角色提交权限")
     @PostMapping("/commitTree")
     //@RequiresPermissions("api:sys:role:commitTree")
     @ApiOperation(value = "提交权限", notes = "给该权限分配菜单", consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -97,6 +101,7 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
+    @MyLog(info = "获取权限列表")
     @PostMapping("/findTree/{id}")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
     @ApiOperation(value = "权限列表", notes = "通过角色id 获取所有的菜单id", consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -115,7 +120,7 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
-    
+    @MyLog(info = "系统角色提交信息")
     @PostMapping("/commit")
     //@RequiresPermissions("api:sys:role:commit")
     @ApiOperation(value = "提交角色信息", notes = "新增/修改 都是这个接口", consumes="application/x-www-form-urlencoded", response = Response.class)
@@ -134,6 +139,7 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
+    @MyLog(info = "系统角色详情")
     @PostMapping("/detail/{id}")
     //@RequiresPermissions("api:sys:role:detail")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
@@ -148,6 +154,7 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
+    @MyLog(info = "系统角色启用")
     @PostMapping("/enable/{id}")
     //@RequiresPermissions("api:sys:role:enable")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
@@ -165,6 +172,7 @@ public class SysRoleController extends BaseController {
      * @Description :
      * @Date 2019/4/25 下午3:52
      */
+    @MyLog(info = "系统角色禁用")
     @PostMapping("/disable/{id}")
     //@RequiresPermissions("api:sys:role:disable")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
