@@ -110,11 +110,18 @@ public class LoginController extends BaseController {
     public Response info(){
         try {
             SysUser sysUser = ShiroUtils.getUserEntity();
+            SysUser serviceInfo = sysUserService.findInfo(sysUser.getId());
+            sysUser.setNickname(serviceInfo.getNickname());
+            sysUser.setMobile(serviceInfo.getMobile());
+            sysUser.setSecret(serviceInfo.getSecret());
             if(sysUser == null) return new Response.Builder(Response.ResponseCode.NEED_LOGIN.getNumber()).msg("获取用户信息失败").build();
             LoginInfoResult result = new LoginInfoResult();
             SysRole sysRole = sysRoleService.findByUserId(sysUser.getId());
             result.setRoleName(sysRole == null? "暂无角色":sysRole.getName());
             result.setNickname(sysUser.getNickname());
+            result.setMobile(sysUser.getMobile());
+            result.setSecret(sysUser.getSecret());
+            result.setId(sysUser.getId());
             return this.response(Response.ResponseCode.SUCCESS).data(result);
         }catch (Exception e){
             log.error("异常", e);

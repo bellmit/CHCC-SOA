@@ -1,6 +1,7 @@
 package com.guihe.platform.core.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
@@ -18,6 +19,9 @@ public class SysUser extends BaseDomain {
     @TableId(type = IdType.AUTO)
     @ApiModelProperty(value = "id")
     private Integer id;
+
+    @ApiModelProperty(value = "头像")
+    private String img;
 
     @ApiModelProperty(value = "账号")
     private String username;
@@ -39,5 +43,9 @@ public class SysUser extends BaseDomain {
 
     @ApiModelProperty(value = "密钥")
     private String secret;
+
+    @TableField(exist = false)
+    @ApiModelProperty(value = "确认密码")
+    private String newPassword;
 
 }

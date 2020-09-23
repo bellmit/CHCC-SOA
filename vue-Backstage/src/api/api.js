@@ -7,7 +7,7 @@ import request from '@/utils/request'
  
 export const upload_path = "https://dyrc.hemiaoit.com/api/upload"
 export const member_path = "https://dyrc.hemiaoit.com/api/member/upload"
-export const _baseUrl = "https://dyrc.hemiaoit.com/api/"
+export const _baseUrl = "http://192.161.1.146:8099/api/"
 
 //获取二维码
 //获取二维码
@@ -17,6 +17,14 @@ export function apiGetCode() {
     method: 'post'
   })
 }
+
+export function apiInfo() {
+  return request({
+    url: '/info',
+    method: 'post'
+  })
+}
+
 //获取登录
 export function apiLogin(params) {
   return request({

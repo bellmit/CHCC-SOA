@@ -1,5 +1,12 @@
 import request from '@/utils/request'
 
+export function apiImg(id) {
+  return request({
+    url: '/sys/user/generator/' + id,
+    method: 'get'
+  })
+}
+
 export function login(data) {
   return request({
     url: '/user/login',

@@ -7,6 +7,9 @@ import com.guihe.platform.core.domain.SysUser;
 import com.guihe.platform.core.form.SysUserForm;
 import com.guihe.platform.core.result.SysUserResult;
 import com.guihe.platform.dao.mapper.middle.SysUserMapper;
+import com.guihe.platform.middle.shiro.ShiroUtils;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +35,17 @@ public class SysUserService extends ServiceImpl<SysUserMapper,SysUser> {
     }
 
     public void updateUser(SysUser users) {
+        if(StringUtils.isNotBlank(users.getPassword())
+                && StringUtils.isNotBlank(users.getNewPassword())
+                && users.getPassword().equals(users.getNewPassword())){
+            String password = users.getPassword();
+            String salt = RandomStringUtils.randomAlphanumeric(20);
+            String sha256Password = ShiroUtils.sha256(password, salt);
+            users.setSalt(salt);
+            users.setPassword(sha256Password);
+        }else{
+            users.setPassword(null);
+        }
         baseMapper.updateById(users);
     }
 

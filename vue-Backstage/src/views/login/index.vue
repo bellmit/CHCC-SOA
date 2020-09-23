@@ -185,9 +185,13 @@ export default {
           data.password = Encrypt(this.loginForm.password);
           apiLogin(data).then(res => {
               if(res.status == 10000){
-                console.log('登录成功')
-                this.$message.success("操作成功");
-                 this.$router.push({ path:'/welcome'})
+                this.$notify({
+                  title: '欢迎光临',
+                  message: '匆忙的工作要注意休息哦!',
+                  type: 'info',
+                  showClose: false
+                });
+                this.$router.push({ path:'/welcome'})
               }else{
                 this.loginForm.password = this.password
                 console.log(this.loginForm)

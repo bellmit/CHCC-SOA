@@ -215,7 +215,8 @@ import { list, findId, commit, findUser, commitUser, changeStatus, deleteDepartm
         this.rows = rows
       },
       open2(res) {
-        this.$message({
+        this.$notify({
+          title: res.code == 10000?'成功':'错误',
           message: res.message,
           type: res.code == 10000?'success':'error'
         });
@@ -253,6 +254,8 @@ import { list, findId, commit, findUser, commitUser, changeStatus, deleteDepartm
             this.open2(res)
             this.currentChange()
           })
+        }).catch(() => {
+          this.currentChange();
         })
       },
       toDelete(id) {
@@ -286,11 +289,6 @@ import { list, findId, commit, findUser, commitUser, changeStatus, deleteDepartm
           this.open2(res)
           this.dialogTreeVisible = false
         })
-        // commitTree(this.treeForm).then(res => {
-        //   this.dialogTreeVisible=false
-        //   this.open2()
-        //   this.currentChange()
-        // })
       },
       onSubmit(){
         commit(this.form).then(res => {

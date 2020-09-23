@@ -13,6 +13,8 @@ import java.util.List;
 @ApiModel
 public class LoginInfoResult {
 
+    private Integer id;
+
     @ApiModelProperty("用户昵称")
     private String nickname;
 
@@ -27,5 +29,11 @@ public class LoginInfoResult {
 
     @ApiModelProperty("权限菜单")
     private List<MenuTreeResult> menus;
+
+    @ApiModelProperty("密钥")
+    private String secret;
+
+    @ApiModelProperty("头像")
+    private String img;
 
 }
