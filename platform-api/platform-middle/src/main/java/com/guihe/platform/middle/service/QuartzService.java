@@ -15,10 +15,9 @@ import java.util.List;
  * @Description TODO Quartz远程调用
  */
 @FeignClient(value = "service-task",fallback = QuartzServiceImpl.class)
-@RequestMapping("/service-quartz/handle")
 public interface QuartzService {
 
-    @GetMapping("/list")
+    @GetMapping("/service-quartz/handle/list")
     List findQuartzList();
 
 }

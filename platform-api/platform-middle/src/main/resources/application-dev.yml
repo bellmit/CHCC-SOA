@@ -1,4 +1,3 @@
-
 server:
   port: 8089
   tomcat:
@@ -6,6 +5,17 @@ server:
     max-threads: 1000
     min-spare-threads: 30
 spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+    #sentinel控制台
+#    sentinel:
+#      transport:
+#        dashboard: localhost:8888
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

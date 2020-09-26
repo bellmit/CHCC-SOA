@@ -2,6 +2,7 @@ package com.guihe.platform.middle.service.impl;
 
 import com.guihe.platform.middle.service.QuartzService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.List;
  * @Description TODO Quartz熔断器
  */
 @Slf4j
-@Service
+@Component
 public class QuartzServiceImpl implements QuartzService {
 
     @Override

@@ -217,7 +217,7 @@ public class QuartzService {
                     Map<String, Object> map = new HashMap<>();
                     map.put("jobName", jobKey.getName());
                     map.put("jobGroupName", jobKey.getGroup());
-                    map.put("description", "触发器:" + trigger.getKey());
+                    map.put("description", trigger.getKey());
                     Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
                     map.put("jobStatus", triggerState.name());
                     if (trigger instanceof CronTrigger) {
@@ -253,7 +253,7 @@ public class QuartzService {
                 Trigger trigger = executingJob.getTrigger();
                 map.put("jobName", jobKey.getName());
                 map.put("jobGroupName", jobKey.getGroup());
-                map.put("description", "触发器:" + trigger.getKey());
+                map.put("description", trigger.getKey());
                 Trigger.TriggerState triggerState = scheduler.getTriggerState(trigger.getKey());
                 map.put("jobStatus", triggerState.name());
                 if (trigger instanceof CronTrigger) {

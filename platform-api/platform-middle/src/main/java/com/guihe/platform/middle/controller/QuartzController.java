@@ -28,7 +28,7 @@ public class QuartzController extends BaseController {
     @Resource
     private QuartzService quartzService;
 
-    @GetMapping("/list")
+    @PostMapping("/list")
     public Response findList(){
         List quartzList = quartzService.findQuartzList();
         return this.response(Response.ResponseCode.SUCCESS).data(quartzList);

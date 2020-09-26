@@ -74,6 +74,16 @@ export const constantRoutes = [
       }
     },
     {
+      path: 'sentinel',
+      // hidden: true,
+      component: () =>
+        import('@/views/monitor/sentinel/index'),
+      name: 'Sentinel控制台',
+      meta: {
+        title: 'Sentinel控制台'
+      }
+    },
+    {
       path: 'swagger',
       // hidden: true,
       component: () =>
@@ -87,7 +97,7 @@ export const constantRoutes = [
       path: 'quartzManager',
       // hidden: true,
       component: () =>
-        import('@/views/monitor/swagger/index'),
+        import('@/views/quartz/manage/index'),
       name: 'Quartz管理',
       meta: {
         title: 'Quartz管理'
