@@ -36,9 +36,9 @@
 #### 模块说明
 
 ```java
-vue-Backstage -- 前端vue工程
+vue-Backstage //前端vue工程
 
-sso-server -- OAuth2认证服务器
+sso-server //OAuth2认证服务器
 
 platform
 |-------- parent //核心maven依赖
