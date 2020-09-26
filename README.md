@@ -5,7 +5,7 @@
 
 #### 主架构 
 
-````
+```maven
 <dependencyManagement>
         <dependencies>
             <dependency>
