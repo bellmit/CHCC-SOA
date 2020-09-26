@@ -35,7 +35,7 @@
 
 #### 模块说明
 
-```js
+```java
 vue-Backstage -- 前端vue工程
 
 sso-server -- OAuth2认证服务器
