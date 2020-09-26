@@ -68,7 +68,7 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
-import headerimg from '@/images/headerimg.jpeg'
+import headerimg from '@/images/headerimg.gif'
 import {_baseUrl, apiLogOut, apiInfo} from '@/api/api'
 import { commit } from '@/api/user'
 

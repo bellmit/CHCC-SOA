@@ -1,3 +1,4 @@
+
 server:
   port: 8089
   tomcat:
@@ -34,3 +35,7 @@ dynamic:
       url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
       username: sa
       password: 123456
+#远程调用
+feign:
+  sentinel:
+    enabled: true #启用熔断器
