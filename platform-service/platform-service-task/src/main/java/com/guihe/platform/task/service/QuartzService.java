@@ -1,5 +1,12 @@
 package com.guihe.platform.task.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.guihe.platform.core.domain.QrtzJobDetails;
+import com.guihe.platform.core.form.BaseForm;
+import com.guihe.platform.dao.mapper.task.QrtzJobDetailsMapper;
 import org.quartz.*;
 import org.quartz.impl.matchers.GroupMatcher;
 import org.springframework.scheduling.quartz.QuartzJobBean;
@@ -8,6 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author CHCC
@@ -17,7 +25,7 @@ import java.util.*;
  * @Description TODO Quartz定时器操作
  */
 @Service
-public class QuartzService {
+public class QuartzService extends ServiceImpl<QrtzJobDetailsMapper, QrtzJobDetails> {
 
     @Resource
     private Scheduler scheduler;
@@ -83,12 +91,12 @@ public class QuartzService {
      * @param jobData 参数
      * @returen void
      **/
-    public void addJob(Class<? extends QuartzJobBean> jobClass, String jobName, String jobGroupName, String jobTime, Map jobData) {
+    public void addJob(Class<? extends QuartzJobBean> jobClass, String jobName, String jobGroupName,String description, String jobTime, Map jobData) {
         try {
             // 创建jobDetail实例，绑定Job实现类
             // 指明job的名称，所在组的名称，以及绑定job类
             // 任务名称和组构成任务key
-            JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(jobName, jobGroupName)
+            JobDetail jobDetail = JobBuilder.newJob(jobClass).withIdentity(jobName, jobGroupName).withDescription(description)
                     .build();
             // 设置job参数
             if(jobData!= null && jobData.size()>0){
@@ -269,4 +277,49 @@ public class QuartzService {
         return jobList;
     }
 
+    /**
+     * @Description TODO 获取列表(带分页)
+     * @Author CHCC
+     * @Date 2020/9/28 4:34 下午
+     * @params  * @param form
+     * @returen com.baomidou.mybatisplus.core.metadata.IPage
+     **/
+    public IPage findList(BaseForm form) {
+        QueryWrapper<QrtzJobDetails> wrapper = new QueryWrapper<>();
+        IPage<QrtzJobDetails> page = baseMapper.selectPage(new Page<>(form.getOffset(), form.getLimmit()), wrapper);
+        try {
+            GroupMatcher<JobKey> matcher = GroupMatcher.anyJobGroup();
+            Set<JobKey> jobKeys = scheduler.getJobKeys(matcher);
+            List<QrtzJobDetails> records = page.getRecords();
+            Map<String, List<QrtzJobDetails>> listMap = records.stream().collect(Collectors.groupingBy(QrtzJobDetails::getJobName));
+            for (JobKey jobKey : jobKeys) {
+                List<? extends Trigger> triggers = scheduler.getTriggersOfJob(jobKey);
+                triggers.forEach(t -> {
+                    if(listMap.get(t.getKey().getName()) != null){
+                        List<QrtzJobDetails> qrtzJobDetails = listMap.get(t.getKey().getName());
+                        QrtzJobDetails details = qrtzJobDetails.get(0);
+                        if (t instanceof CronTrigger) {
+                            CronTrigger cronTrigger = (CronTrigger) t;
+                            String cronExpression = cronTrigger.getCronExpression();
+                            details.setJobTime(cronExpression);
+                        }
+                    }
+                });
+            }
+        }catch (Exception e){}
+        return page;
+    }
+
+    /**
+     * @Description TODO 根据任务名获取任务详情
+     * @Author CHCC
+     * @Date 2020/9/28 4:34 下午
+     * @params  * @param name
+     * @returen com.guihe.platform.core.domain.QrtzJobDetails
+     **/
+    public QrtzJobDetails findByName(String name) {
+        QueryWrapper<QrtzJobDetails> wrapper = new QueryWrapper<>();
+        wrapper.eq("JOB_NAME",name);
+        return baseMapper.selectOne(wrapper);
+    }
 }

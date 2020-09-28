@@ -1,4 +1,4 @@
-package com.guihe.platform.dao.config;
+package com.guihe.platform.core.enmus;
 
 /**
  * @author CHCC

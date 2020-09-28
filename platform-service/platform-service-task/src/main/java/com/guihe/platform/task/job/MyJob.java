@@ -1,10 +1,12 @@
 package com.guihe.platform.task.job;
 
+import com.guihe.platform.core.aop.QuartzLog;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.JobDataMap;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -15,8 +17,10 @@ import org.springframework.scheduling.quartz.QuartzJobBean;
  * @Description TODO
  */
 @Slf4j
+@Component(value = "myJob")
 public class MyJob extends QuartzJobBean {
 
+    @QuartzLog("myJob")
     @Override
     protected void executeInternal(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         // 获取参数

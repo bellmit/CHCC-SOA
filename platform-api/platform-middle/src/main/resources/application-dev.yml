@@ -13,9 +13,9 @@ spring:
         file-extension: yaml
         server-addr: localhost:8848
     #sentinel控制台
-#    sentinel:
-#      transport:
-#        dashboard: localhost:8888
+    sentinel:
+      transport:
+        dashboard: localhost:8888
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

@@ -1,4 +1,6 @@
-package com.guihe.platform.dao.config;
+package com.guihe.platform.core.aop;
+
+import com.guihe.platform.core.enmus.DataSourceType;
 
 import java.lang.annotation.*;
 

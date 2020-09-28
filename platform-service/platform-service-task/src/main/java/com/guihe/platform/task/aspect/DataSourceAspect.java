@@ -1,6 +1,6 @@
 package com.guihe.platform.task.aspect;
 
-import com.guihe.platform.dao.config.DataSource;
+import com.guihe.platform.core.aop.DataSource;
 import com.guihe.platform.dao.config.DynamicContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
  * @FileName DataSourceAspect
  * @Date 2020/9/19 11:40 上午
  * @Version 1.0
- * @Description TODO
+ * @Description TODO 多数据源切面
  */
 @Aspect
 @Order(1)
@@ -26,8 +26,8 @@ import java.lang.reflect.Method;
 @Slf4j
 public class DataSourceAspect {
 
-    @Pointcut("@annotation(com.guihe.platform.dao.config.DataSource) " +
-            "|| @within(com.guihe.platform.dao.config.DataSource)")
+    @Pointcut("@annotation(com.guihe.platform.core.aop.DataSource) " +
+            "|| @within(com.guihe.platform.core.aop.DataSource)")
     public void dataSourcePointCut() {
 
     }

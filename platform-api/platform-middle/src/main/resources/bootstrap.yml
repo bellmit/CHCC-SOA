@@ -11,12 +11,13 @@ spring:
     name: api-middle
   profiles:
     active: dev
-  cloud:
-    nacos:
-      discovery:
-        server-addr: localhost:8848
-      config:
-        file-extension: yaml
-        server-addr: localhost:8848
 mybatis-plus:
   mapper-locations: classpath*:mapping/*/*.xml
+feign:
+  httpclient:
+    connection-timeout: 3000
+  client:
+    config:
+      default:
+        readTimeout: 5000
+        connectTimeout: 5000
