@@ -107,7 +107,7 @@ export const constantRoutes = [
       path: 'quartzLog',
       // hidden: true,
       component: () =>
-        import('@/views/monitor/swagger/index'),
+        import('@/views/quartz/log/index'),
       name: 'Quartz日志',
       meta: {
         title: 'Quartz日志'

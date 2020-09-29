@@ -15,6 +15,14 @@ export function list() {
     })
 }
 
+export function logsList(data) {
+  return request({
+    url: '/quartz/logs/list',
+    method: 'post',
+    data: data
+  })
+}
+
 export function deleteJob(data) {
   return request({
     url: '/quartz/deleteJob',

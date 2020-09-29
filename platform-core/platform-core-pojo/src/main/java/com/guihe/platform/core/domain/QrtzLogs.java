@@ -47,11 +47,11 @@ public class QrtzLogs extends BaseForm {
     /** 创建时间 */
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone="GMT+8")
-    private Date createdTime ;
+    private Date createTime ;
 
     public QrtzLogs() {}
 
-    public QrtzLogs(String className, String methodName, String jobName, String jobGroup, String description, Double playTime, String jobData, Integer status, String errMsg, Date createdTime) {
+    public QrtzLogs(String className, String methodName, String jobName, String jobGroup, String description, Double playTime, String jobData, Integer status, String errMsg, Date createTime) {
         this.className = className;
         this.methodName = methodName;
         this.jobName = jobName;
@@ -61,6 +61,6 @@ public class QrtzLogs extends BaseForm {
         this.jobData = jobData;
         this.status = status;
         this.errMsg = errMsg;
-        this.createdTime = createdTime;
+        this.createTime = createTime;
     }
 }

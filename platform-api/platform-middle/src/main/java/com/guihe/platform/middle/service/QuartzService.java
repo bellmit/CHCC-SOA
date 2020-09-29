@@ -1,5 +1,6 @@
 package com.guihe.platform.middle.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.guihe.platform.core.domain.QrtzJobDetails;
 import com.guihe.platform.core.form.BaseForm;
 import com.guihe.platform.middle.service.impl.QuartzServiceImpl;
