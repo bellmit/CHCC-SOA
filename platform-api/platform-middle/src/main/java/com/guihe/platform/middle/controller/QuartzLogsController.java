@@ -8,6 +8,7 @@ import com.guihe.platform.middle.service.QuartzLogsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,7 @@ public class QuartzLogsController extends BaseController {
 
     @MyLog(info = "获取Quartz日志列表")
     @PostMapping("/list")
+    @RequiresPermissions("api:quartz:log:list")
     @ApiOperation(value = "获取Quartz日志列表", notes = "获取Quartz日志列表", response = QrtzLogs.class)
     public Response findList(@RequestBody QrtzLogs logs){
         Object quartzList = quartzLogsService.findList(logs);

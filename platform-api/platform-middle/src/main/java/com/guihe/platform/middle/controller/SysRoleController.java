@@ -14,6 +14,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +40,7 @@ public class SysRoleController extends BaseController {
 
     @MyLog(info = "系统角色列表")
     @PostMapping("/list")
-   // @RequiresPermissions("api:sys:role:list")
+    @RequiresPermissions("api:sys:role:list")
     @ApiOperation(value = "后台系统角色列表", notes = "有分页参数 offset limmit",consumes="application/x-www-form-urlencoded", response = SysRoleResult.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "角色名称", dataType = "string", paramType = "query"),
@@ -78,7 +79,7 @@ public class SysRoleController extends BaseController {
 
     @MyLog(info = "系统角色提交权限")
     @PostMapping("/commitTree")
-    //@RequiresPermissions("api:sys:role:commitTree")
+    @RequiresPermissions("api:sys:role:commitTree")
     @ApiOperation(value = "提交权限", notes = "给该权限分配菜单", consumes="application/x-www-form-urlencoded", response = Response.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "ids", value = "菜单id拼接 通过,分割", dataType = "string", paramType = "query"),
@@ -122,7 +123,7 @@ public class SysRoleController extends BaseController {
      */
     @MyLog(info = "系统角色提交信息")
     @PostMapping("/commit")
-    //@RequiresPermissions("api:sys:role:commit")
+    @RequiresPermissions("api:sys:role:commit")
     @ApiOperation(value = "提交角色信息", notes = "新增/修改 都是这个接口", consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response commitRole(SysRole sysRole){
         try{
@@ -141,7 +142,7 @@ public class SysRoleController extends BaseController {
      */
     @MyLog(info = "系统角色详情")
     @PostMapping("/detail/{id}")
-    //@RequiresPermissions("api:sys:role:detail")
+    @RequiresPermissions("api:sys:role:detail")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
     @ApiOperation(value = "获取角色信息", consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response findInfo(@PathVariable("id") Integer id){
@@ -156,7 +157,7 @@ public class SysRoleController extends BaseController {
      */
     @MyLog(info = "系统角色启用")
     @PostMapping("/enable/{id}")
-    //@RequiresPermissions("api:sys:role:enable")
+    @RequiresPermissions("api:sys:role:enable")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
     @ApiOperation(value = "启用角色", consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response enable(@PathVariable("id") Integer id){
@@ -174,7 +175,7 @@ public class SysRoleController extends BaseController {
      */
     @MyLog(info = "系统角色禁用")
     @PostMapping("/disable/{id}")
-    //@RequiresPermissions("api:sys:role:disable")
+    @RequiresPermissions("api:sys:role:disable")
     @ApiImplicitParam(name = "id", value = "角色id", dataType = "int", paramType = "query")
     @ApiOperation(value = "禁用角色", consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response disable(@PathVariable("id") Integer id){

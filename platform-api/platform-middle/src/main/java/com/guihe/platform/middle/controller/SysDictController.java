@@ -9,6 +9,7 @@ import com.guihe.platform.middle.shiro.ShiroUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -32,6 +33,7 @@ public class SysDictController extends BaseController {
 
     @MyLog(info = "系统字典管理列表")
     @PostMapping("/list")
+    @RequiresPermissions("api:sys:dict:list")
     @ApiOperation(value = "列表", notes = "有分页参数 offset limmit",consumes="application/json", response = SysDict.class)
     public Response list(@RequestBody SysDict sysDict){
         IPage<SysDict> page = sysDictService.findList(sysDict);
@@ -41,6 +43,7 @@ public class SysDictController extends BaseController {
 
     @MyLog(info = "系统字典管理获取详情")
     @PostMapping("/detail/{id}")
+    @RequiresPermissions("api:sys:dict:detail")
     @ApiOperation(value = "根据id查询详情", notes = "根据id查询详情",consumes="application/json", response = SysDict.class)
     public Response findById(@PathVariable("id") Integer id){
         SysDict sysDict = sysDictService.findById(id);
@@ -49,6 +52,7 @@ public class SysDictController extends BaseController {
 
     @MyLog(info = "系统字典管理提交数据")
     @PostMapping("/commit")
+    @RequiresPermissions("api:sys:dict:commit")
     @ApiOperation(value = "提交数据", notes = "提交数据",consumes="application/json", response = Response.class)
     public Response commit(@RequestBody SysDict sysDict){
         SysUser user = ShiroUtils.getUserEntity();
@@ -66,6 +70,7 @@ public class SysDictController extends BaseController {
 
     @MyLog(info = "系统字典更改状态")
     @PostMapping("/changeStatus")
+    @RequiresPermissions("api:sys:dict:changeStatus")
     @ApiOperation(value = "系统字典更改状态", notes = "系统字典更改状态",consumes="application/json", response = Response.class)
     public Response changeStatus(@RequestBody SysDict sysDict){
         SysUser user = ShiroUtils.getUserEntity();
@@ -78,6 +83,7 @@ public class SysDictController extends BaseController {
 
     @MyLog(info = "系统字典删除")
     @PostMapping("/delete")
+    @RequiresPermissions("api:sys:dict:delete")
     @ApiOperation(value = "系统字典删除", notes = "系统字典删除",consumes="application/json", response = Response.class)
     public Response delete(@RequestBody SysDict sysDict){
         SysUser user = ShiroUtils.getUserEntity();
