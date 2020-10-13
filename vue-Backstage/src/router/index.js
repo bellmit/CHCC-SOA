@@ -58,14 +58,14 @@ export const constantRoutes = [
     path: '/j',
     component: Layout,
     name: '服务监控',
-    // hidden: true,
+    hidden: true,
     meta: {
       title: '服务监控',
       icon: 'wangzhan'
     },
     children: [{
       path: 'nacos',
-      // hidden: true,
+      hidden: true,
       component: () =>
         import('@/views/monitor/nacos/index'),
       name: 'Nacos监控',
@@ -75,7 +75,7 @@ export const constantRoutes = [
     },
     {
       path: 'sentinel',
-      // hidden: true,
+      hidden: true,
       component: () =>
         import('@/views/monitor/sentinel/index'),
       name: 'Sentinel控制台',
@@ -85,7 +85,7 @@ export const constantRoutes = [
     },
     {
       path: 'swagger',
-      // hidden: true,
+      hidden: true,
       component: () =>
         import('@/views/monitor/swagger/index'),
       name: 'API文档',
@@ -95,7 +95,7 @@ export const constantRoutes = [
     },
     {
       path: 'quartzManager',
-      // hidden: true,
+      hidden: true,
       component: () =>
         import('@/views/quartz/manage/index'),
       name: 'Quartz管理',
@@ -105,7 +105,7 @@ export const constantRoutes = [
     },
     {
       path: 'quartzLog',
-      // hidden: true,
+      hidden: true,
       component: () =>
         import('@/views/quartz/log/index'),
       name: 'Quartz日志',
