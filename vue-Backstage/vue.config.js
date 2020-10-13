@@ -28,7 +28,7 @@ module.exports = {
     productionSourceMap: false,
     devServer: {
       port: port,
-      host: '192.161.1.146',
+      host: 'localhost',
       open: true,
       overlay: {
         warnings: false,
@@ -36,7 +36,7 @@ module.exports = {
       },
     proxy: {
       '/api': {
-        target: 'http://127.0.0.1:8089/api',
+        target: 'http://192.161.1.146:8089/api',
         pathRewrite: {'^/api' : ''},
         changeOrigin: true,     // target是域名的话，需要这个参数，
         secure: false

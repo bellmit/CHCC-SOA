@@ -124,7 +124,18 @@ export const constantRoutes = [
       title: '系统管理',
       icon: 'SystemSetting'
     },
-    children: [{
+    children: [
+    {
+      path: 'dict',
+      hidden: true,
+      component: () =>
+        import('@/views/dict/index'),
+      name: '字典管理',
+      meta: {
+        title: '字典管理'
+      }
+    },
+    {
       path: 'menuList',
       hidden: true,
       component: () =>
