@@ -10,6 +10,7 @@ import com.guihe.platform.middle.shiro.ShiroUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -33,6 +34,7 @@ public class SysDepartmentController extends BaseController {
 
     @MyLog(info = "系统部门管理列表")
     @PostMapping("/list")
+    @RequiresPermissions("api:sys:department:list")
     @ApiOperation(value = "列表", notes = "有分页参数 offset limmit",consumes="application/json", response = SysDepartment.class)
     public Response list(@RequestBody SysDepartment department){
         IPage<SysDepartment> page = sysDepartmentService.findList(department);
@@ -42,6 +44,7 @@ public class SysDepartmentController extends BaseController {
 
     @MyLog(info = "系统部门管理获取详情")
     @PostMapping("/detail/{id}")
+    @RequiresPermissions("api:sys:department:detail")
     @ApiOperation(value = "根据id查询详情", notes = "根据id查询详情",consumes="application/json", response = SysDepartment.class)
     public Response findById(@PathVariable("id") Integer id){
         SysDepartment department = sysDepartmentService.getById(id);
@@ -50,6 +53,7 @@ public class SysDepartmentController extends BaseController {
 
     @MyLog(info = "系统部门管理提交数据")
     @PostMapping("/commit")
+    @RequiresPermissions("api:sys:department:commit")
     @ApiOperation(value = "提交数据", notes = "提交数据",consumes="application/json", response = Response.class)
     public Response commit(@RequestBody SysDepartment department){
         SysUser user = ShiroUtils.getUserEntity();
@@ -75,6 +79,7 @@ public class SysDepartmentController extends BaseController {
 
     @MyLog(info = "系统部门分配用户")
     @PostMapping("/commitUser")
+    @RequiresPermissions("api:sys:department:commitUser")
     @ApiOperation(value = "系统部门分配用户", notes = "系统部门分配用户",consumes="application/json", response = Response.class)
     public Response commitUser(@RequestBody Map<String,Object> map){
         if(Objects.isNull(map.get("id"))){
@@ -86,6 +91,7 @@ public class SysDepartmentController extends BaseController {
 
     @MyLog(info = "系统部门更改状态")
     @PostMapping("/changeStatus")
+    @RequiresPermissions("api:sys:department:changeStatus")
     @ApiOperation(value = "系统部门更改状态", notes = "系统部门更改状态",consumes="application/json", response = Response.class)
     public Response changeStatus(@RequestBody SysDepartment department){
         SysUser user = ShiroUtils.getUserEntity();
@@ -98,6 +104,7 @@ public class SysDepartmentController extends BaseController {
 
     @MyLog(info = "系统部门删除")
     @PostMapping("/delete")
+    @RequiresPermissions("api:sys:department:delete")
     @ApiOperation(value = "系统部门删除", notes = "系统部门删除",consumes="application/json", response = Response.class)
     public Response delete(@RequestBody SysDepartment department){
         SysUser user = ShiroUtils.getUserEntity();

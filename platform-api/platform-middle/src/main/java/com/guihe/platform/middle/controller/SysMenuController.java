@@ -15,6 +15,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,7 +40,7 @@ public class SysMenuController extends BaseController {
      */
     @MyLog(info = "系统菜单列表")
     @PostMapping("/list")
-    //@RequiresPermissions("api:sys:menu:list")
+    @RequiresPermissions("api:sys:menu:list")
     @ApiOperation(value = "后台系统菜单列表", notes = "有分页参数 offset limmit",consumes="application/x-www-form-urlencoded", response = SysMenuResult.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "name", value = "菜单名称", dataType = "string", paramType = "query"),
@@ -99,7 +100,7 @@ public class SysMenuController extends BaseController {
      */
     @MyLog(info = "添加系统菜单")
     @PostMapping("/add")
-   // @RequiresPermissions("api:sys:menu:add")
+    @RequiresPermissions("api:sys:menu:add")
     @ApiOperation(value = "添加菜单", notes = "添加菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response addMenu(SysMenu sysMenu){
         if(StringUtils.isBlank(sysMenu.getName())){
@@ -129,7 +130,7 @@ public class SysMenuController extends BaseController {
      */
     @MyLog(info = "修改系统菜单")
     @PostMapping("/edit")
-   // @RequiresPermissions("api:sys:menu:edit")
+    @RequiresPermissions("api:sys:menu:edit")
     @ApiOperation(value = "编辑菜单", notes = "编辑菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response editMenu(SysMenu sysMenu){
         if(sysMenu.getId() == null){
@@ -166,7 +167,7 @@ public class SysMenuController extends BaseController {
      */
     @MyLog(info = "系统菜单删除")
     @PostMapping("/remove/{id}")
-    //@RequiresPermissions("api:sys:menu:remove")
+    @RequiresPermissions("api:sys:menu:remove")
     @ApiImplicitParam(name = "id", value = "菜单id", required = true, dataType = "int", paramType = "query")
     @ApiOperation(value = "删除菜单", notes = "删除菜单",consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response removeMenu(@PathVariable("id") Integer id){

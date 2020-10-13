@@ -18,6 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -43,7 +44,7 @@ public class SysUserController extends BaseController{
 
     @MyLog(info = "系统用户菜单列表")
     @PostMapping("/list")
-    //@RequiresPermissions("api:sys:user:list")
+    @RequiresPermissions("api:sys:user:list")
     @ApiOperation(value = "后台系统用户列表", notes = "有分页参数 offset limmit",consumes="application/x-www-form-urlencoded", response = SysUserResult.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "nickname", value = "用户昵称 精确查询", dataType = "string", paramType = "query"),
@@ -88,7 +89,7 @@ public class SysUserController extends BaseController{
 
     @MyLog(info = "系统用户分配角色")
     @PostMapping("/commitRole")
-    //@RequiresPermissions("api:sys:user:commitRole")
+    @RequiresPermissions("api:sys:user:commitRole")
     @ApiOperation(value = "提交权限数据", notes = "提交权限数据 给该用户分配权限 提交权限id",consumes="application/x-www-form-urlencoded", response = Response.class)
     @ApiImplicitParams({
             @ApiImplicitParam(name = "ids", value = "权限id字符串 通过,分割", required = true, dataType = "string", paramType = "query"),
@@ -108,6 +109,7 @@ public class SysUserController extends BaseController{
 
     @MyLog(info = "系统用户提交信息数据")
     @PostMapping("/commitUser")
+    @RequiresPermissions("api:sys:user:commit")
     @ApiOperation(value = "提交用户信息数据", notes = "修改用户信息  新增用户都走这个接口",consumes="application/x-www-form-urlencoded", response = Response.class)
     public Response commitUser(SysUser sysUser){
         if(sysUser.getId() == null){
@@ -164,7 +166,7 @@ public class SysUserController extends BaseController{
 
     @MyLog(info = "启用系统用户")
     @PostMapping("/enable/{id}")
-    //@RequiresPermissions("api:sys:user:enable")
+    @RequiresPermissions("api:sys:user:enable")
     @ApiOperation(value = "启用用户",consumes="application/x-www-form-urlencoded", response = Response.class)
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "int", paramType = "query")
     public Response enable(@PathVariable("id") String id){
@@ -184,7 +186,7 @@ public class SysUserController extends BaseController{
 
     @MyLog(info = "禁用系统用户")
     @PostMapping("/disable/{id}")
-   // @RequiresPermissions("api:sys:user:disable")
+    @RequiresPermissions("api:sys:user:disable")
     @ApiOperation(value = "禁用用户",consumes="application/x-www-form-urlencoded", response = Response.class)
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "int", paramType = "query")
     public Response disable(@PathVariable("id") String id){
@@ -204,7 +206,7 @@ public class SysUserController extends BaseController{
 
     @MyLog(info = "系统用户重置密码")
     @PostMapping("/reset/{id}")
-    //@RequiresPermissions("api:sys:user:reset")
+    @RequiresPermissions("api:sys:user:reset")
     @ApiOperation(value = "重置密码", notes = "重置密码为 12345678", consumes="application/x-www-form-urlencoded", response = Response.class)
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "int", paramType = "query")
     public Response reset(@PathVariable("id") String id){
