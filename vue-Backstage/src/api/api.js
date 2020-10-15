@@ -3,11 +3,16 @@ import request from '@/utils/request'
 
 // export const upload_path = "http://192.168.31.175:8099/api/upload"
 // export const member_path = "http://192.168.31.175:8099/api/member/upload"
-// export const _baseUrl = "http://192.168.31.175:8099/api/"
+export const _baseUrl = "http://123.57.27.53:8099/api/"
+
+//监控
+export const nacos_path = "http://123.57.27.53:8100"
+export const swagger_path = "http://123.57.27.53:8101"
+export const sentinel_path = "http://123.57.27.53:8102"
  
 export const upload_path = "https://dyrc.hemiaoit.com/api/upload"
 export const member_path = "https://dyrc.hemiaoit.com/api/member/upload"
-export const _baseUrl = "http://192.161.1.146:8099/api/"
+// export const _baseUrl = "http://192.161.1.146:8099/api/"
 
 //获取二维码
 //获取二维码

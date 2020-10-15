@@ -2,6 +2,8 @@
 </template>
 
 <script>
+import nacos_path from '@/api/api'
+
 export default {
     data() {
         return {
@@ -9,7 +11,7 @@ export default {
         }
     },
     created: function() {
-        window.open('http://192.161.1.146:8848/nacos','_blank');
+        window.open(nacos_path,'_blank');
     }
 }
 </script>

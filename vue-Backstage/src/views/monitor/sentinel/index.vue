@@ -1,5 +1,7 @@
 <template></template>
 <script>
+import sentinel_path from '@/api/api'
+
 export default {
     data() {
         return {
@@ -7,7 +9,7 @@ export default {
         }
     },
     created: function() {
-        window.open('http://192.161.1.146:8888','_blank');
+        window.open(sentinel_path,'_blank');
     }
 }
 </script>
