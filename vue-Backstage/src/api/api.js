@@ -6,9 +6,9 @@ import request from '@/utils/request'
 export const _baseUrl = "http://123.57.27.53:8099/api/"
 
 //监控
-export const nacos_path = "http://123.57.27.53:8099/nacos-api"
-export const swagger_path = "http://123.57.27.53:8099/swagger-api"
-export const sentinel_path = "http://123.57.27.53:8099/sentinel-api"
+export const nacos_path = "http://123.57.27.53:8848/nacos"
+export const swagger_path = "http://123.57.27.53:8089/doc.html"
+export const sentinel_path = "http://123.57.27.53:8888"
  
 export const upload_path = "https://dyrc.hemiaoit.com/api/upload"
 export const member_path = "https://dyrc.hemiaoit.com/api/member/upload"
