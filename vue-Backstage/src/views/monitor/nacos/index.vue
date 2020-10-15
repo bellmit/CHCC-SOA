@@ -2,16 +2,16 @@
 </template>
 
 <script>
-import nacos_path from '@/api/api'
+import { nacos_path } from '@/api/api'
 
 export default {
     data() {
         return {
-            nacos: "http://192.161.1.146:8848/nacos"
+            nacos: nacos_path
         }
     },
     created: function() {
-        window.open(nacos_path,'_blank');
+        window.open(this.nacos,'_blank');
     }
 }
 </script>
