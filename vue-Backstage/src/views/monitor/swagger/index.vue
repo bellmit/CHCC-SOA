@@ -1,13 +1,15 @@
 <template></template>
 <script>
+import { swagger_path } from '@/api/api'
+
 export default {
     data() {
         return {
-            nacos: "http://192.161.1.146:8848/nacos"
+            swagger: swagger_path
         }
     },
     created: function() {
-        window.open('http://192.161.1.146:8089/doc.html','_blank');
+        window.open(this.swagger,'_blank');
     }
 }
 </script>
