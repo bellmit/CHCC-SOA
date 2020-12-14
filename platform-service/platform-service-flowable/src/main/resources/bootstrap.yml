@@ -1,0 +1,16 @@
+spring:
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  application:
+    name: service-flowable
+  profiles:
+    active: dev
+
+mybatis-plus:
+  mapper-locations: classpath*:mapping/*/*.xml
