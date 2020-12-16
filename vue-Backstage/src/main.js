@@ -15,6 +15,15 @@ import locale from 'element-ui/lib/locale/lang/zh-CN'
 
 import '@/styles/index.scss' // global css
 
+import 'reset.css/reset.css'
+import 'bpmn-js/dist/assets/diagram-js.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-codes.css'
+import 'bpmn-js/dist/assets/bpmn-font/css/bpmn-embedded.css'
+import './components/bpmn/assets/css/vue-bmpn.css'
+import './assets/css/element-ui.css'
+import './assets/css/iconfont.css'
+
 import App from './App'
 import store from './store'
 import router from './router'
