@@ -42,11 +42,11 @@ swagger:
 dynamic:
   datasource:
     sqlserver:
-      enable: false
+      enable: true
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
+      url: jdbc:sqlserver://192.168.11.235:1433;DatabaseName=JNJLCS
       username: sa
-      password: 123456
+      password: asco1993
 #远程调用
 feign:
   sentinel:
