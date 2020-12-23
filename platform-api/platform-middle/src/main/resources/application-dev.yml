@@ -42,7 +42,7 @@ swagger:
 dynamic:
   datasource:
     sqlserver:
-      enable: true
+      enable: false
       driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
       url: jdbc:sqlserver://192.168.11.235:1433;DatabaseName=JNJLCS
       username: sa
