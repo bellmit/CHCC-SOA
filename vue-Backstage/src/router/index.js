@@ -55,6 +55,28 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/yewu',
+    component: Layout,
+    name: '业务管理',
+    hidden: false,
+    meta: {
+      title: '业务管理',
+      icon: 'SystemSetting'
+    },
+    children: [
+    {
+      path: 'dict',
+      hidden: false,
+      component: () =>
+        import('@/views/process/index'),
+      name: '测试',
+      meta: {
+        title: '测试'
+      }
+    }
+    ]
+  },
+  {
     path: '/j',
     component: Layout,
     name: '服务监控',
