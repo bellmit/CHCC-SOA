@@ -29,7 +29,7 @@ spring:
         - id: api-jiulong
           uri: lb://api-jiulong
           predicates:
-          - Path=/api/**
+            - Path=/api/**
           filters:
             - StripPrefix=1
         - id: sso-server

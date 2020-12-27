@@ -8,13 +8,13 @@
     <artifactId>Guihe_platform</artifactId>
     <version>0.0.1</version>
     <modules>
-        <module>../sso-server</module>
-        <module>../platform-core</module>
-        <module>../platform-dao/platform-mybatis-dao</module>
-        <module>../platform-provider-api</module>
-        <module>../platform-common</module>
-        <module>../platform-service</module>
-        <module>../platform-gateway</module>
+        <module>sso-server</module>
+        <module>platform-core</module>
+        <module>platform-dao/platform-mybatis-dao</module>
+        <module>platform-provider-api</module>
+        <module>platform-common</module>
+        <module>platform-service</module>
+        <module>platform-gateway</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>platform-service</artifactId>
-        <groupId>com.guihe</groupId>
+        <groupId>com.guihe.service</groupId>
         <version>0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.parent.groupId}</groupId>
+            <groupId>com.guihe</groupId>
             <artifactId>platform-mybatis-dao</artifactId>
             <version>${project.parent.version}</version>
         </dependency>

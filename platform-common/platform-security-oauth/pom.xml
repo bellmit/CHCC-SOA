@@ -3,23 +3,24 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>platform-service</artifactId>
-        <groupId>com.guihe.service</groupId>
+        <groupId>com.guihe.common</groupId>
+        <artifactId>platform-common</artifactId>
         <version>0.0.1</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>platform-service-flowable</artifactId>
+    <artifactId>platform-security-oauth</artifactId>
 
     <dependencies>
         <dependency>
-            <groupId>com.guihe</groupId>
-            <artifactId>platform-mybatis-dao</artifactId>
-            <version>${project.parent.version}</version>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>2.0.9.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.flowable</groupId>
-            <artifactId>flowable-spring-boot-starter</artifactId>
-            <version>6.4.1</version>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+            <version>1.1.0.RELEASE</version>
         </dependency>
     </dependencies>
 
