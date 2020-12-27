@@ -1,4 +1,4 @@
-package com.guihe.platform.jiulong.config;
+package com.guihe.platform.security.resource.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
  * @FileName OAuthResourcesServiceConfig
  * @Date 2020/12/27 8:36 上午
  * @Version 1.0
- * @Description TODO
+ * @Description TODO OAuth2资源服务器配置
  */
 @Order(0)
 @Configuration
@@ -31,6 +31,9 @@ public class OAuthResourcesServiceConfig extends ResourceServerConfigurerAdapter
     @Value("${security.oauth2.client.check-token}")
     private String tokenServer;
 
+    @Value("${security.oauth2.client.resource-id}")
+    private String resourceId;
+
     @Bean
     public RemoteTokenServices remoteTokenServices(){
         final RemoteTokenServices tokenServices = new RemoteTokenServices();
@@ -42,7 +45,7 @@ public class OAuthResourcesServiceConfig extends ResourceServerConfigurerAdapter
 
     @Override
     public void configure(ResourceServerSecurityConfigurer resources) throws Exception {
-        resources.resourceId("api-jiulong").stateless(true);
+        resources.resourceId(resourceId).stateless(true);
     }
 
     @Override

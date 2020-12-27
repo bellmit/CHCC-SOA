@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -22,22 +23,31 @@ import java.nio.charset.Charset;
  * @FileName AuthFilter
  * @Date 2020/12/27 4:03 下午
  * @Version 1.0
- * @Description TODO 鉴权过滤器
+ * @Description TODO OAuth2鉴权过滤器
  */
 @Component
 public class AuthFilter implements GlobalFilter, Ordered {
+
+    private static final String LOGOUT_URI = "/oauth/token";
 
     @Resource
     private JwtTokenStore jwtTokenStore;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        String requestURI = exchange.getRequest().getURI().toString();
+        if (requestURI.contains(LOGOUT_URI)) {
+            return chain.filter(exchange);
+        }
+
         ServerHttpResponse response = exchange.getResponse();
         //查看请求中有没有带jwt token
         String token = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
         if(StringUtils.isBlank(token)){
             return result(response);
         }
+        //校验token
+        OAuth2AccessToken oAuth2AccessToken = jwtTokenStore.readAccessToken(token);
 
         return chain.filter(exchange);
     }

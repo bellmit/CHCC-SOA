@@ -17,6 +17,7 @@
 
     <modules>
         <module>platform-security-oauth</module>
+        <module>platform-security-resource</module>
     </modules>
 
 </project>

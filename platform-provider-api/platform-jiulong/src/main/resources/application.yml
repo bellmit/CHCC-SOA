@@ -35,3 +35,4 @@ security:
       client-id: UserManagement
       client-secret: user123
       check-token: http://localhost:8080/oauth/check_token
+      resource-id: api-jiulong
