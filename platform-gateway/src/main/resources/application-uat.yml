@@ -1,0 +1,71 @@
+server:
+  port: 8199
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+    #sentinel控制台
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      enable: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/platform?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+  #Redis配置
+  redis:
+    host: 47.105.204.66
+    password: hhzh1234
+    port: 6379
+  #Quartz相关属性配置
+  quartz:
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceName: DefaultQuartzScheduler
+            instanceId: AUTO #默认主机名和时间戳生成实例ID,可以是任何字符串，但对于所有调度程序来说，必须是唯一的 对应qrtz_scheduler_state INSTANCE_NAME字段
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX #持久化配置
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            tablePrefix: QRTZ_ #数据库表前缀
+            isClustered: false #打开群集功能
+            clusterCheckinInterval: 10000 #设置此实例“检入”*与群集的其他实例的频率（以毫秒为单位）。影响检测失败实例的速度。
+            useProperties: false #以指示JDBCJobStore将JobDataMaps中的所有值都作为字符串，因此可以作为名称 - 值对存储而不是在BLOB列中以其序列化形式存储更多复杂的对象。从长远来看，这是更安全的，因为您避免了将非String类序列化为BLOB的类版本问题
+          threadPool: #连接池
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
+          dataSource: #数据库连接
+            default:
+              URL: ${spring.datasource.druid.url}
+              user: ${spring.datasource.druid.username}
+              password: ${spring.datasource.druid.password}
+              driver: com.mysql.jdbc.Driver
+
+    #数据库方式
+    job-store-type: jdbc
+
+
+#多数据源
+dynamic:
+  datasource:
+    sqlserver:
+      enable: false
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
+      username: sa
+      password: 123456

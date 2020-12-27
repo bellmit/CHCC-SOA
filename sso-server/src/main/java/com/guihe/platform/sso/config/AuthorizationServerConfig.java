@@ -1,7 +1,9 @@
 package com.guihe.platform.sso.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -10,27 +12,47 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 
-import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
- * @author CHCC
- * @FileName AuthorizationServerConfig
- * @Date 2020/8/4 10:02 上午
- * @Version 1.0
- * @Description TODO 配置SSO服务采用JWT验证
+ * @author chengcheng
  */
 @Configuration
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
 
-    @Resource
+    @Autowired
     private DataSource dataSource;
+
+    @Autowired
+    private RedisConnectionFactory redisConnectionFactory;
+
+    /**
+     * 配置token存储，这个配置token存到redis中
+     * @return
+     */
+//    @Bean
+//    public TokenStore tokenStore() {
+//        return new RedisTokenStore(redisConnectionFactory);
+//    }
+
+    /**
+     * 配置授权码模式授权码服务,不配置默认为内存模式
+     * @return
+     */
+//    @Primary
+//    @Bean
+//    public AuthorizationCodeServices authorizationCodeServices() {
+//        return new RedisAuthorizationCodeServices(redisConnectionFactory);
+//    }
 
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
+//        security.allowFormAuthenticationForClients();
         security.allowFormAuthenticationForClients();
         security.tokenKeyAccess("isAuthenticated()");
+        //资源服务器请求token不进行拦截
+        security.checkTokenAccess("permitAll()");
     }
 
     @Override
@@ -42,17 +64,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.accessTokenConverter(jwtAccessTokenConverter());
         endpoints.tokenStore(jwtTokenStore());
-//        endpoints.tokenServices(defaultTokenServices());
     }
-
-    /*@Primary
-    @Bean
-    public DefaultTokenServices defaultTokenServices() {
-        DefaultTokenServices defaultTokenServices = new DefaultTokenServices();
-        defaultTokenServices.setTokenStore(jwtTokenStore());
-        defaultTokenServices.setSupportRefreshToken(true);
-        return defaultTokenServices;
-    }*/
 
     @Bean
     public JwtTokenStore jwtTokenStore() {
@@ -62,7 +74,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Bean
     public JwtAccessTokenConverter jwtAccessTokenConverter() {
         JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-        jwtAccessTokenConverter.setSigningKey("guihe-chcc");   //  Sets the JWT signing key
+        jwtAccessTokenConverter.setSigningKey("Gui-he-platform");
         return jwtAccessTokenConverter;
     }
 

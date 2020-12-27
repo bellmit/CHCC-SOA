@@ -8,9 +8,6 @@ spring:
     time-zone: GMT+8
     date-format: yyyy-MM-dd HH:mm:ss
   application:
-    name: zuul-getway
+    name: api-jiulong
   profiles:
     active: dev
-
-mybatis-plus:
-  mapper-locations: classpath*:mapping/*/*.xml

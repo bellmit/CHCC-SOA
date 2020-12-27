@@ -1,0 +1,66 @@
+server:
+  port: 8200
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+    #sentinel控制台
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+
+    # gateway配置
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: api-jiulong
+          uri: lb://api-jiulong
+          predicates:
+          - Path=/api/**
+        - id: sso-server
+          uri: lb://sso-server
+          predicates:
+            - Path=/auth/**
+  #  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      enable: true
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#      url: jdbc:mysql://localhost:3306/platform?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#      username: root
+#      password: 123456
+  #Redis配置
+#  redis:
+#    host: 47.105.204.66
+#    password: hhzh1234
+#    port: 6379
+
+# oauth2配置
+security:
+  oauth2:
+    client:
+      client-id: gateway_client
+      client-secret: 123456
+    resource:
+      jwt:
+        key-uri: http://localhost:8080/oauth/token_key
+#多数据源
+dynamic:
+  datasource:
+    sqlserver:
+      enable: false
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://localhost:1433;DatabaseName=renren_security
+      username: sa
+      password: 123456

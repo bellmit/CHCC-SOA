@@ -1,0 +1,37 @@
+server:
+  port: 8085
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+      config:
+        file-extension: yaml
+        server-addr: localhost:8848
+    #sentinel控制台
+    sentinel:
+      transport:
+        dashboard: localhost:8888
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8080/oauth/token_key
+#远程调用
+feign:
+  sentinel:
+    enabled: true #启用熔断器
+
+
+security:
+  oauth2:
+    client:
+      client-id: UserManagement
+      client-secret: user123
+      check-token: http://localhost:8080/oauth/check_token
