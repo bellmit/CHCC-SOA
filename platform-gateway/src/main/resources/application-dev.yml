@@ -21,17 +21,23 @@ spring:
     gateway:
       discovery:
         locator:
+          #开启从注册中心动态创建路由的功能
           enabled: true
+          #使用小写服务名，默认是大写
           lower-case-service-id: true
       routes:
         - id: api-jiulong
           uri: lb://api-jiulong
           predicates:
           - Path=/api/**
+          filters:
+            - StripPrefix=1
         - id: sso-server
           uri: lb://sso-server
           predicates:
             - Path=/auth/**
+          filters:
+            - StripPrefix=1
   #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
@@ -46,15 +52,6 @@ spring:
 #    password: hhzh1234
 #    port: 6379
 
-# oauth2配置
-security:
-  oauth2:
-    client:
-      client-id: gateway_client
-      client-secret: 123456
-    resource:
-      jwt:
-        key-uri: http://localhost:8080/oauth/token_key
 #多数据源
 dynamic:
   datasource:
