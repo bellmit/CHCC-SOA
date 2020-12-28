@@ -1,7 +1,7 @@
 package com.guihe.platform.task.aspect;
 
 import com.guihe.platform.core.aop.DataSource;
-import com.guihe.platform.dao.config.DynamicContextHolder;
+import com.guihe.platform.dao.dynamic.DynamicContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

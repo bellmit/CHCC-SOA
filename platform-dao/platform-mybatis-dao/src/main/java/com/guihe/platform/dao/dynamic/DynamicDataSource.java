@@ -1,4 +1,4 @@
-package com.guihe.platform.dao.config;
+package com.guihe.platform.dao.dynamic;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 

@@ -1,12 +1,12 @@
 package com.guihe.platform.middle.controller;
 
+import com.guihe.platform.common.core.google.GoogleGenerator;
 import com.guihe.platform.core.aop.MyLog;
 import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.core.domain.SysRole;
 import com.guihe.platform.core.domain.SysUser;
 import com.guihe.platform.core.result.LoginInfoResult;
 import com.guihe.platform.core.util.CipherAESUtil;
-import com.guihe.platform.middle.config.GoogleGenerator;
 import com.guihe.platform.middle.service.SysMenuService;
 import com.guihe.platform.middle.service.SysRoleService;
 import com.guihe.platform.middle.service.SysUserService;

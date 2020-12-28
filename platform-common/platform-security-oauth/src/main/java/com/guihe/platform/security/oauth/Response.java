@@ -1,24 +1,18 @@
-package com.guihe.platform.core.domain;
+package com.guihe.platform.security.oauth;
 
 import com.alibaba.fastjson.JSON;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 
 /**
  * Created by Chengcheng on 2018/12/12.
  */
-@ApiModel(description= "返回响应数据")
 public class Response implements Serializable{
 
-    @ApiModelProperty(value = "响应信息说明")
     private String msg;
 
-    @ApiModelProperty(value = "返回状态:10000-请求成功  20000-请求失败  20001-重新登录  200002-账号锁定")
     private Integer code;
 
-    @ApiModelProperty(value = "响应参数")
     private Object data;
 
     private Response(Builder builder){
@@ -89,6 +83,10 @@ public class Response implements Serializable{
         return "false";
     }
 
+    public static Response builder(ResponseCode code){
+        return new Builder(code.number).build();
+    }
+
     public static class Builder {
         private String message;
 
@@ -147,7 +145,9 @@ public class Response implements Serializable{
 
         SIGN_ERROR(40000,"签名失败"),
 
-        UNAUTHORIZED(40001,"无访问权限");
+        UNAUTHORIZED(40001,"无访问权限"),
+
+        TOKEN_INVALID(40002,"签证失效");
 
 
         private Integer number;

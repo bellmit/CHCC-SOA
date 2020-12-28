@@ -1,6 +1,8 @@
-package com.guihe.platform.dao.config;
+package com.guihe.platform.dao.dynamic;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.guihe.platform.dao.config.DataSourceProperties;
+
 import java.sql.SQLException;
 
 /**

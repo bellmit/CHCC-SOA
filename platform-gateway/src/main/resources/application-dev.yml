@@ -38,7 +38,12 @@ spring:
             - Path=/auth/**
           filters:
             - StripPrefix=1
-  #  datasource:
+secure:
+  ignore:
+    jwtPrefix: Bearer
+    urls:
+      - /auth/oauth/token
+#  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
 #      enable: true

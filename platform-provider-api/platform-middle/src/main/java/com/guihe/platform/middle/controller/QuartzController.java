@@ -1,6 +1,5 @@
 package com.guihe.platform.middle.controller;
 
-import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.guihe.platform.core.aop.MyLog;
 import com.guihe.platform.core.domain.QrtzJobDetails;
 import com.guihe.platform.core.domain.Response;

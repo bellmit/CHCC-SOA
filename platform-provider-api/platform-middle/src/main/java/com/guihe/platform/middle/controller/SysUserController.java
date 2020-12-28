@@ -2,13 +2,13 @@ package com.guihe.platform.middle.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.google.zxing.WriterException;
+import com.guihe.platform.common.core.google.GoogleGenerator;
 import com.guihe.platform.core.aop.MyLog;
 import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.core.domain.SysUser;
 import com.guihe.platform.core.form.SysUserForm;
 import com.guihe.platform.core.form.TreeForm;
 import com.guihe.platform.core.result.SysUserResult;
-import com.guihe.platform.middle.config.GoogleGenerator;
 import com.guihe.platform.middle.service.SysUserService;
 import com.guihe.platform.middle.shiro.ShiroUtils;
 import io.swagger.annotations.Api;

@@ -1,11 +1,11 @@
-package com.guihe.platform.middle.aspect;
+package com.guihe.platform.common.core.aspect;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.Gson;
+import com.guihe.platform.common.core.utils.IPUtil;
 import com.guihe.platform.core.aop.MyLog;
-import com.guihe.platform.middle.util.IPUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;

@@ -2,8 +2,8 @@ package com.guihe.platform.task.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.guihe.platform.dao.config.DataSourceProperties;
-import com.guihe.platform.dao.config.DynamicDataSource;
-import com.guihe.platform.dao.config.DynamicDataSourceFactory;
+import com.guihe.platform.dao.dynamic.DynamicDataSource;
+import com.guihe.platform.dao.dynamic.DynamicDataSourceFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package com.guihe.platform.middle.config;
+package com.guihe.platform.common.core.google;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

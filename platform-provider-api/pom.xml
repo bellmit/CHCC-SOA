@@ -13,14 +13,10 @@
     <modules>
         <module>platform-middle</module>
         <module>platform-rest</module>
-        <module>platform-jiulong</module>
+        <module>platform-jiulong-wx</module>
     </modules>
 
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -42,8 +38,9 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.guihe.common</groupId>
+            <artifactId>platform-common-core</artifactId>
+            <version>0.0.1</version>
         </dependency>
     </dependencies>
 

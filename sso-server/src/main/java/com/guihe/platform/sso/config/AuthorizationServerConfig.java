@@ -21,8 +21,8 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    private RedisConnectionFactory redisConnectionFactory;
+//    @Autowired
+//    private RedisConnectionFactory redisConnectionFactory;
 
     @Autowired
     private JwtConfig jwtConfig;
@@ -51,7 +51,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 //        security.allowFormAuthenticationForClients();
         security.allowFormAuthenticationForClients();
         security.tokenKeyAccess("isAuthenticated()");
-        //资源服务器请求token不进行拦截
+        //资源服务器验证token不进行拦截
         security.checkTokenAccess("permitAll()");
     }
 

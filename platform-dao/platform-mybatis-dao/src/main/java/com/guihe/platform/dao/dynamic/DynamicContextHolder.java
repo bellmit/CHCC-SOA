@@ -1,4 +1,4 @@
-package com.guihe.platform.dao.config;
+package com.guihe.platform.dao.dynamic;
 
 import lombok.extern.slf4j.Slf4j;
 

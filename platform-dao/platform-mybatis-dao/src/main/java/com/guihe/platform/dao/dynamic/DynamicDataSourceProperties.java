@@ -1,4 +1,4 @@
-package com.guihe.platform.middle.config;
+package com.guihe.platform.dao.dynamic;
 
 import com.guihe.platform.dao.config.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;

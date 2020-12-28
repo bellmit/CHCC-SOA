@@ -16,8 +16,17 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>platform-common-core</module>
         <module>platform-security-oauth</module>
         <module>platform-security-resource</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
