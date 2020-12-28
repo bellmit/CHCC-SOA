@@ -5,6 +5,19 @@ server:
     max-threads: 1000
     min-spare-threads: 30
 spring:
+  #数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      enable: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/platform?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+  redis:
+    host: 127.0.0.1
+    password:
+    port: 6379
   cloud:
     nacos:
       discovery:
@@ -16,8 +29,7 @@ spring:
     sentinel:
       transport:
         dashboard: localhost:8888
-
-    # gateway配置
+    #gateway配置
     gateway:
       discovery:
         locator:
@@ -42,7 +54,7 @@ secure:
   ignore:
     jwtPrefix: Bearer
     urls:
-      - /auth/oauth/token
+      - "/auth/oauth/token"
 #  datasource:
 #    type: com.alibaba.druid.pool.DruidDataSource
 #    druid:
@@ -51,11 +63,6 @@ secure:
 #      url: jdbc:mysql://localhost:3306/platform?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #      username: root
 #      password: 123456
-  #Redis配置
-#  redis:
-#    host: 47.105.204.66
-#    password: hhzh1234
-#    port: 6379
 
 #多数据源
 dynamic:

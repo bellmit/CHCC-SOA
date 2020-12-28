@@ -3,6 +3,7 @@ package com.guihe.platform.getway.filter;
 import com.alibaba.fastjson.JSONObject;
 import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.getway.config.IgnoreUrlsConfig;
+import com.guihe.platform.security.oauth.token.TokenRedisConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -15,7 +16,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.server.RequestPath;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
+import org.springframework.security.oauth2.provider.token.TokenStore;
+import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
@@ -39,10 +41,11 @@ public class AuthFilter implements GlobalFilter, Ordered {
     private IgnoreUrlsConfig urlsConfig;
 
     @Resource
-    private JwtTokenStore jwtTokenStore;
+    private TokenRedisConfig tokenRedisConfig;
 
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        TokenStore tokenStore = tokenRedisConfig.tokenStore();
         List<String> urls = urlsConfig.getUrls();
         String jwtPrefix = urlsConfig.getJwtPrefix();
         RequestPath path = exchange.getRequest().getPath();
@@ -60,7 +63,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
             token = StringUtils.substringAfter(token, jwtPrefix);
 
             //校验token
-            OAuth2AccessToken oAuth2AccessToken = jwtTokenStore.readAccessToken(token);
+            OAuth2AccessToken oAuth2AccessToken = tokenStore.readAccessToken(token);
             int expires = oAuth2AccessToken.getExpiresIn();
             if(expires < 0) {
                 return http401Result(response,Response.ResponseCode.TOKEN_INVALID);
