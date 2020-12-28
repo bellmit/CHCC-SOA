@@ -23,6 +23,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.guihe</groupId>
+            <artifactId>platform-core</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>

@@ -18,17 +18,36 @@ spring:
     sentinel:
       transport:
         dashboard: localhost:8888
+  #数据库配置
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      enable: true
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/platform?allowMultiQueries=true&UseAffectedRows=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
   security:
     oauth2:
       resourceserver:
         jwt:
           jwk-set-uri: http://localhost:8080/oauth/token_key
+#多数据源
+dynamic:
+  datasource:
+    sqlserver:
+      enable: true
+      driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+      url: jdbc:sqlserver://192.168.11.235:1433;DatabaseName=JNJLCS
+      username: sa
+      password: asco1993
+
 #远程调用
 feign:
   sentinel:
     enabled: true #启用熔断器
 
-
+#OAuth2资源服务器配置
 security:
   oauth2:
     client:

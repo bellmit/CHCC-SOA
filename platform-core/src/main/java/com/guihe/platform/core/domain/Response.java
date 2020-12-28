@@ -89,6 +89,10 @@ public class Response implements Serializable{
         return "false";
     }
 
+    public static Response builder(ResponseCode code){
+        return new Builder(code.number).build();
+    }
+
     public static class Builder {
         private String message;
 
@@ -147,7 +151,9 @@ public class Response implements Serializable{
 
         SIGN_ERROR(40000,"签名失败"),
 
-        UNAUTHORIZED(40001,"无访问权限");
+        UNAUTHORIZED(40001,"无访问权限"),
+
+        TOKEN_INVALID(40002, "签证验证失败");
 
 
         private Integer number;

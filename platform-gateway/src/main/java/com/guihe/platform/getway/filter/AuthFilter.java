@@ -1,8 +1,8 @@
 package com.guihe.platform.getway.filter;
 
 import com.alibaba.fastjson.JSONObject;
+import com.guihe.platform.core.domain.Response;
 import com.guihe.platform.getway.config.IgnoreUrlsConfig;
-import com.guihe.platform.security.oauth.Response;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -54,7 +54,7 @@ public class AuthFilter implements GlobalFilter, Ordered {
             //查看请求中有没有带jwt token
             String token = exchange.getRequest().getHeaders().getFirst(HttpHeaders.AUTHORIZATION);
             if(StringUtils.isBlank(token) && !token.startsWith(jwtPrefix)){
-                return http401Result(response,Response.ResponseCode.UNAUTHORIZED);
+                return http401Result(response, Response.ResponseCode.UNAUTHORIZED);
             }
             //截取token
             token = StringUtils.substringAfter(token, jwtPrefix);
